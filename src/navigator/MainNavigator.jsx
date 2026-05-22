@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import Opaylogin from '../screens/OpayLogin'
-import OpayScreen from '../screens/Home'
 import TabNavigation from './TabNavigation'
 import Finance from '../screens/Finance'
 import Rewards from '../screens/Rewards'

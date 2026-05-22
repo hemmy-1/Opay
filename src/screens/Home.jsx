@@ -5,11 +5,21 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function Home() {
+
+    const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
+    const hideBalance = () => {
+        setIsBalanceVisible(!isBalanceVisible)
+    }
+
+
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container1}>
@@ -35,44 +45,68 @@ export default function Home() {
                     </View>
                 </View>
 
-                <View style={{
-                    flexWrap: 'wrap',
-                    gap: 20,
-                    backgroundColor: '#0d6528',
-                    borderRadius: 18,
-                    padding: 10,
-                    // alignItems: 'center',
-                    height: 110,
-                }}>
-                    <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-                        <View
-                            style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
-                            <MaterialCommunityIcons name="guitar-pick" size={24} color="#fff" />
-                            <Text style={{ color: '#fff', fontSize: 18, }}>Available balance</Text>
-                            <MaterialCommunityIcons name="eye-off-outline" size={24} color="#fff" />
+                <View style={{ backgroundColor: '#012b0e', height:160, borderRadius:18}}>
+                    <View style={{
+                        flexWrap: 'wrap',
+                        gap: 20,
+                        backgroundColor: '#0d6528',
+                        borderRadius: 18,
+                        padding: 10,
+                        // alignItems: 'center',
+                        height: 110,
+                    }}>
+                        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+                            <View
+                                style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+                                <MaterialCommunityIcons name="guitar-pick" size={24} color="#fff" />
+                                <Text style={{ color: '#fff', fontSize: 18, }}>Available balance</Text>
+                                <TouchableOpacity onPress={hideBalance}>
+                                    <MaterialCommunityIcons name={isBalanceVisible ? "eye-off-outline" : "eye-outline"} size={24} color="#fff" />
+                                </TouchableOpacity>
 
 
+                            </View>
+
+                            <View style={{ gap: 20, marginStart: 70 }}>
+                                <Text style={{ color: '#fff', fontSize: 18, }}>Transaction History  {'>'}  </Text>
+
+                            </View>
                         </View>
 
-                        <View style={{ gap: 20, marginStart: 70 }}>
-                            <Text style={{ color: '#fff', fontSize: 18, }}>Transaction History  {'>'}  </Text>
+                        <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between', paddingHorizontal: 10, }}>
+                            <View>
+                                <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
+                            </View>
+
+                            <View style={{ backgroundColor: '000000', borderRadius: 10, alignSelf: "flex-end" }}>
+                                <Text style={{ color: '#fff', fontSize: 18, backgroundColor: '000000' }}> + add money</Text>
+                            </View>
+
+
+
 
                         </View>
                     </View>
 
-                    <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between', paddingHorizontal: 10, }}>
-                        <View>
-                            <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>₦ 7,694,802.00 {'>'}</Text>
+                    <View style={{flex:1, alignItems:'center', paddingHorizontal:20, flexDirection:'row', gap:15, alignContent:'center', justifyContent:'space-between'}}>
+                        <View style={{ flexDirection:'row', alignItems:'center', gap:15}}>
+                        <View style={{ backgroundColor: '#02210b', height:25, width:25, justifyContent:'center', borderRadius:10, alignItems:'center' }}>
+                            <FontAwesome name="bank" size={15} color="#0d6528" />
+                        </View>
+                        <Text style={{color:'#888', fontSize:12}}>
+                            Business Service - Today's Sales:
+                            <Text style={{ color: '#1dbc4d', fontSize:12 }}> ₦5,432.10</Text>
+                        </Text>
                         </View>
 
-                        <View style={{ backgroundColor: '000000', borderRadius: 10, alignSelf: "flex-end" }}>
-                            <Text style={{ color: '#fff', fontSize: 18, backgroundColor: '000000' }}> + add money</Text>
+                        <View style={{ backgroundColor: '#02210b', height: 20, width: 20, justifyContent: 'center', borderRadius: 10, alignItems: 'center' }}>
+                            <Text style={{ color: '#1dbc4d', fontWeight:'bold' }}>{'>'}</Text>
+
                         </View>
-
-
-
 
                     </View>
+
+
                 </View>
 
                 <View style={{
