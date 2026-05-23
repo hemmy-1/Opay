@@ -6,19 +6,50 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
-import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function Home() {
 
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-
     const hideBalance = () => {
-        setIsBalanceVisible(!isBalanceVisible)
+       setIsBalanceVisible(!isBalanceVisible)
+       
     }
 
 
+    const DataHistory = [
+        {
+            id: '1',
+            img: require('../assets/percentage.png'),
+            name: 'OWealth Intrest Earned',
+            date: 'May 23rd, 20:59:08',
+            amount: '+₦23.39',
+            status: 'Successful'
+        },
+        {
+            id: '2',
+            img: require('../assets/percentage.png'),
+            name: 'OWealth Intrest Earned',
+            date: 'May 25rd, 19:59:08',
+            amount: '+₦263.39',
+            status: 'Successful'
+        },
+        
+    ]
+
+
+
+const dataHistoryView = ({item}) => {
+    return(
+        <View>
+            <View>
+                <Image source={item.img}/>
+            </View>
+        </View>
+    )
+}
 
     return (
         <SafeAreaProvider>
@@ -108,6 +139,34 @@ export default function Home() {
 
 
                 </View>
+
+                {isBalanceVisible? 
+                    (
+                        <View></View>
+                    ) :
+                    (<View style={{
+                    flexWrap: 'wrap',
+
+                    backgroundColor: '#393535',
+                    borderRadius: 18,
+                    padding: 10,
+                    //alignItems: 'center',
+                    height: 110,
+                    
+                    paddingHorizontal: 20,
+                    marginHorizontal: 10,
+
+
+                }}>
+                    <FlatList
+                    data={DataHistory}
+                    renderItem={dataHistoryView}
+                    keyExtractor={item => item.id}/>
+                    
+                </View>)  
+                }
+
+
 
                 <View style={{
                     flexWrap: 'wrap',
