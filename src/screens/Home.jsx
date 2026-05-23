@@ -14,8 +14,8 @@ export default function Home() {
 
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
     const hideBalance = () => {
-       setIsBalanceVisible(!isBalanceVisible)
-       
+        setIsBalanceVisible(!isBalanceVisible)
+
     }
 
 
@@ -36,20 +36,39 @@ export default function Home() {
             amount: '+₦263.39',
             status: 'Successful'
         },
-        
+
     ]
 
 
 
-const dataHistoryView = ({item}) => {
-    return(
-        <View>
-            <View>
-                <Image source={item.img}/>
+    const dataHistoryView = ({ item }) => {
+        return (
+            <View style={{ paddingVertical: 5, flexDirection: 'row', justifyContent:'space-between' }}>
+                <View style={{ flexDirection:'row' }}>
+                    <View style={{
+                        height: 35, width: 35, backgroundColor: 'white', borderRadius: 30,
+                        justifyContent: 'center', alignItems: 'center'
+                    }}>
+                        <Image source={item.img} style={{ height: 35, width: 35 }} />
+                    </View>
+                    <View style={{ paddingLeft: 10 }}>
+                        <Text style={{ color: 'white', fontSize: 15 }}>{item.name}</Text>
+                        <Text style={{ color: '#888', fontSize: 13 }}>{item.date}</Text>
+                    </View>
+                </View>
+                <View style={{alignItems:'center' }}>
+                    <Text style={{ color: '#0d6528', fontSize: 16, fontWeight:'800' }}>
+                        {item.amount}
+                    </Text>
+                    <View style={{ height: 18, flexWrap:'wrap', backgroundColor:'#033813',
+                        paddingHorizontal:5, borderRadius:10
+                    }}>
+                        <Text style={{ color: '#0d6528', fontWeight:'800' }}>{item.status}</Text>
+                    </View>
+                </View>
             </View>
-        </View>
-    )
-}
+        )
+    }
 
     return (
         <SafeAreaProvider>
@@ -76,7 +95,7 @@ const dataHistoryView = ({item}) => {
                     </View>
                 </View>
 
-                <View style={{ backgroundColor: '#012b0e', height:160, borderRadius:18}}>
+                <View style={{ backgroundColor: '#012b0e', height: 160, borderRadius: 18 }}>
                     <View style={{
                         flexWrap: 'wrap',
                         gap: 20,
@@ -109,8 +128,11 @@ const dataHistoryView = ({item}) => {
                                 <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
                             </View>
 
-                            <View style={{ backgroundColor: '000000', borderRadius: 10, alignSelf: "flex-end" }}>
-                                <Text style={{ color: '#fff', fontSize: 18, backgroundColor: '000000' }}> + add money</Text>
+                            <View style={{ backgroundColor: '#000000', borderRadius: 30, alignSelf: "flex-end", alignItems:'center',paddingHorizontal:6,
+                                justifyContent:'center', alignContent:'center',
+                                height:35, width:120
+                             }}>
+                                <Text style={{ color: '#fff', fontSize: 18 }}>+ add money</Text>
                             </View>
 
 
@@ -119,19 +141,19 @@ const dataHistoryView = ({item}) => {
                         </View>
                     </View>
 
-                    <View style={{flex:1, alignItems:'center', paddingHorizontal:20, flexDirection:'row', gap:15, alignContent:'center', justifyContent:'space-between'}}>
-                        <View style={{ flexDirection:'row', alignItems:'center', gap:15}}>
-                        <View style={{ backgroundColor: '#02210b', height:25, width:25, justifyContent:'center', borderRadius:10, alignItems:'center' }}>
-                            <FontAwesome name="bank" size={15} color="#0d6528" />
-                        </View>
-                        <Text style={{color:'#888', fontSize:12}}>
-                            Business Service - Today's Sales:
-                            <Text style={{ color: '#1dbc4d', fontSize:12 }}> ₦5,432.10</Text>
-                        </Text>
+                    <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 20, flexDirection: 'row', gap: 15, alignContent: 'center', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
+                            <View style={{ backgroundColor: '#02210b', height: 25, width: 25, justifyContent: 'center', borderRadius: 10, alignItems: 'center' }}>
+                                <FontAwesome name="bank" size={15} color="#0d6528" />
+                            </View>
+                            <Text style={{ color: '#888', fontSize: 12 }}>
+                                Business Service - Today's Sales:
+                                <Text style={{ color: '#1dbc4d', fontSize: 12 }}> ₦5,432.10</Text>
+                            </Text>
                         </View>
 
                         <View style={{ backgroundColor: '#02210b', height: 20, width: 20, justifyContent: 'center', borderRadius: 10, alignItems: 'center' }}>
-                            <Text style={{ color: '#1dbc4d', fontWeight:'bold' }}>{'>'}</Text>
+                            <Text style={{ color: '#1dbc4d', fontWeight: 'bold' }}>{'>'}</Text>
 
                         </View>
 
@@ -140,30 +162,35 @@ const dataHistoryView = ({item}) => {
 
                 </View>
 
-                {isBalanceVisible? 
+                {isBalanceVisible ?
                     (
                         <View></View>
                     ) :
                     (<View style={{
-                    flexWrap: 'wrap',
+                        width:'95%',
 
-                    backgroundColor: '#393535',
-                    borderRadius: 18,
-                    padding: 10,
-                    //alignItems: 'center',
-                    height: 110,
-                    
-                    paddingHorizontal: 20,
-                    marginHorizontal: 10,
+                        backgroundColor: '#393535',
+                        borderRadius: 18,
+                        padding: 10,
+                        //alignItems: 'center',
+                        height: 120,
+
+                        paddingHorizontal: 20,
+                        marginHorizontal: 10,
+                        
 
 
-                }}>
-                    <FlatList
-                    data={DataHistory}
-                    renderItem={dataHistoryView}
-                    keyExtractor={item => item.id}/>
-                    
-                </View>)  
+
+
+                    }}>
+                        <FlatList
+                            data={DataHistory}
+                            renderItem={dataHistoryView}
+                            keyExtractor={item => item.id}
+                            style={{flex:1}}
+                             />
+
+                    </View>)
                 }
 
 
