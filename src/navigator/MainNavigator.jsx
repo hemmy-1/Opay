@@ -7,6 +7,7 @@ import Rewards from '../screens/Rewards'
 import Cards from '../screens/Cards'
 import Me from '../screens/Me'
 import Home from '../screens/Home'
+import MyProfile from '../screens/MyProfile'
 
 
 
@@ -22,6 +23,7 @@ const MainNavigator = () => {
       <Stack.Screen name='Finance' component={Finance} />
       <Stack.Screen name='Cards' component={Cards} />
       <Stack.Screen name='Me' component={Me} />
+      <Stack.Screen name='MyProfile' component={MyProfile} />
     </Stack.Navigator>
   )
 } 

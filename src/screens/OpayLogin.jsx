@@ -91,7 +91,7 @@ export default function Opaylogin() {
           style={[isButtonDisabled && style.disabledButton]}
           disabled={isButtonDisabled}
 
-          onPress={() => navigation.navigate('OpayScreen')}>
+          onPress={() => navigation.navigate('Home')}>
 
           <View style={{
             height: 50, width: 350, backgroundColor: '#1DCF9F', borderWidth: 2,

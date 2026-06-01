@@ -8,15 +8,20 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Home() {
+
+    const navigation = useNavigation()
 
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
     const hideBalance = () => {
         setIsBalanceVisible(!isBalanceVisible)
 
     }
+
+    const logoImage = require('../assets/logoooo.png');
 
 
     const DataHistory = [
@@ -43,8 +48,8 @@ export default function Home() {
 
     const dataHistoryView = ({ item }) => {
         return (
-            <View style={{ paddingVertical: 5, flexDirection: 'row', justifyContent:'space-between' }}>
-                <View style={{ flexDirection:'row' }}>
+            <View style={{ paddingVertical: 5, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row' }}>
                     <View style={{
                         height: 35, width: 35, backgroundColor: 'white', borderRadius: 30,
                         justifyContent: 'center', alignItems: 'center'
@@ -56,14 +61,15 @@ export default function Home() {
                         <Text style={{ color: '#888', fontSize: 13 }}>{item.date}</Text>
                     </View>
                 </View>
-                <View style={{alignItems:'center' }}>
-                    <Text style={{ color: '#0d6528', fontSize: 16, fontWeight:'800' }}>
+                <View style={{ alignItems: 'center' }}>
+                    <Text style={{ color: '#0d6528', fontSize: 16, fontWeight: '800' }}>
                         {item.amount}
                     </Text>
-                    <View style={{ height: 18, flexWrap:'wrap', backgroundColor:'#033813',
-                        paddingHorizontal:5, borderRadius:10
+                    <View style={{
+                        height: 18, flexWrap: 'wrap', backgroundColor: '#033813',
+                        paddingHorizontal: 5, borderRadius: 10
                     }}>
-                        <Text style={{ color: '#0d6528', fontWeight:'800' }}>{item.status}</Text>
+                        <Text style={{ color: '#0d6528', fontWeight: '800' }}>{item.status}</Text>
                     </View>
                 </View>
             </View>
@@ -85,7 +91,9 @@ export default function Home() {
 
                 }}>
                     <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-                        <Image source={require('../assets/logoooo.png')} style={{ width: 40, height: 50, borderRadius: 25 }} />
+                        <TouchableOpacity onPress={() => navigation.navigate('MyProfile', logoImage)}>
+                            <Image source={logoImage} style={{ width: 40, height: 50, borderRadius: 25 }} />
+                        </TouchableOpacity>
                         <Text style={{ color: '#ffffff', fontSize: 24, }}>hi, hemmy</Text>
                     </View>
                     <View style={{ flexDirection: 'row', gap: 20, marginLeft: 'auto' }}>
@@ -128,10 +136,11 @@ export default function Home() {
                                 <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
                             </View>
 
-                            <View style={{ backgroundColor: '#000000', borderRadius: 30, alignSelf: "flex-end", alignItems:'center',paddingHorizontal:6,
-                                justifyContent:'center', alignContent:'center',
-                                height:35, width:120
-                             }}>
+                            <View style={{
+                                backgroundColor: '#000000', borderRadius: 30, alignSelf: "flex-end", alignItems: 'center', paddingHorizontal: 6,
+                                justifyContent: 'center', alignContent: 'center',
+                                height: 35, width: 120
+                            }}>
                                 <Text style={{ color: '#fff', fontSize: 18 }}>+ add money</Text>
                             </View>
 
@@ -167,7 +176,7 @@ export default function Home() {
                         <View></View>
                     ) :
                     (<View style={{
-                        width:'95%',
+                        width: '95%',
 
                         backgroundColor: '#393535',
                         borderRadius: 18,
@@ -177,7 +186,7 @@ export default function Home() {
 
                         paddingHorizontal: 20,
                         marginHorizontal: 10,
-                        
+
 
 
 
@@ -187,8 +196,8 @@ export default function Home() {
                             data={DataHistory}
                             renderItem={dataHistoryView}
                             keyExtractor={item => item.id}
-                            style={{flex:1}}
-                             />
+                            style={{ flex: 1 }}
+                        />
 
                     </View>)
                 }
