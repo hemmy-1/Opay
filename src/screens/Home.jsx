@@ -16,7 +16,9 @@ export default function Home() {
     const navigation = useNavigation()
 
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
     const hideBalance = () => {
+        console.log("it's working well.")
         setIsBalanceVisible(!isBalanceVisible)
 
     }

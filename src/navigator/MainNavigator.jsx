@@ -8,6 +8,7 @@ import Cards from '../screens/Cards'
 import Me from '../screens/Me'
 import Home from '../screens/Home'
 import MyProfile from '../screens/MyProfile'
+import AccountLimit from '../screens/AccountLimit'
 
 
 
@@ -15,16 +16,19 @@ const Stack = createNativeStackNavigator()
 
 const MainNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='TabNavigation' component={TabNavigation} />
+    <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
       <Stack.Screen name='Login' component={Opaylogin} />
+      <Stack.Screen name='TabNavigation' component={TabNavigation} />
       <Stack.Screen name='Home' component={Home}/>
       <Stack.Screen name='Rewards' component={Rewards} />
       <Stack.Screen name='Finance' component={Finance} />
       <Stack.Screen name='Cards' component={Cards} />
       <Stack.Screen name='Me' component={Me} />
       <Stack.Screen name='MyProfile' component={MyProfile} />
+      <Stack.Screen name='Account' component={AccountLimit} />
     </Stack.Navigator>
   )
-} 
+}
+
 export default MainNavigator;
+

@@ -24,7 +24,7 @@ export default function MyProfile({ route }) {
             </SafeAreaView>
 
             <View style={styles.container}>
-                <View style={{ height: 240, width: '100%', backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 15, gap: 45 }}>
+                <View style={{ flexWrap: 'wrap', width: '100%', backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 15, gap: 40 }}>
                     <View style={{ alignSelf: 'center', alignItems: 'center', }}>
                         <Image source={logoImage} style={{ height: 80, width: 80, borderRadius: 50 }} resizeMode='cover' />
                         <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>hemmy</Text>
@@ -38,42 +38,57 @@ export default function MyProfile({ route }) {
                             </TouchableOpacity>
                         </View>
                     </View>
+                    <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginBottom: '10' }} >
+                        <Text style={{ color: 'white' }}>Account Tier</Text>
+
+                        <TouchableOpacity onPress={() => navigation.navigate('MainNavigator', { screen: 'AccountLimit' })}>
+                            <Text style={{ color: 'white' }}>{"Tier 3  >"}</Text>
+                        </TouchableOpacity>
+
+                    </View>
                 </View>
 
-                <View style={{flexWrap:'wrap', width: '100%', backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 15, gap: 45, }}>
+                <View style={{ flexWrap: 'wrap', width: '100%', backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 15, gap: 45, }}>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Full Name</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Full Name</Text>
                         <Text style={{ color: 'white' }}>Adegbola Emmanuel T.</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Mobile Number</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Mobile Number</Text>
                         <Text style={{ color: 'white' }}>{"+2349152543383   >"}</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Nickname</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Nickname</Text>
                         <Text style={{ color: 'white' }}>{"hemmy   >"}</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Gender</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Gender</Text>
                         <Text style={{ color: 'white' }}>Male</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Date of Birth</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Date of Birth</Text>
                         <Text style={{ color: 'white' }}>{"**-**-12"}.</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Email</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Email</Text>
                         <Text style={{ color: 'white' }}>p*gmail.com</Text>
                     </View>
                     <View style={{
-                        flexDirection: 'row', justifyContent:'space-between'}}>
-                        <Text style={{ color: 'white',  }}>Address</Text>
+                        flexDirection: 'row', justifyContent: 'space-between'
+                    }}>
+                        <Text style={{ color: 'white', }}>Address</Text>
                         <Text style={{ color: 'white' }}>{">"}</Text>
                     </View>
                 </View>
