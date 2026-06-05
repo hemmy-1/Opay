@@ -4,8 +4,10 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "reac
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Opaylogin() {
+export default function Opaylogin({ setIsLoggedIn }) {
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);}
   const navigation = useNavigation()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState('false');
@@ -91,7 +93,7 @@ export default function Opaylogin() {
           style={[isButtonDisabled && style.disabledButton]}
           disabled={isButtonDisabled}
 
-          onPress={() => navigation.navigate('Home')}>
+          onPress={handleLogin}>
 
           <View style={{
             height: 50, width: 350, backgroundColor: '#1DCF9F', borderWidth: 2,
@@ -113,7 +115,7 @@ export default function Opaylogin() {
 
           </View>
         </TouchableOpacity>
-
+        
 
       </SafeAreaView>
     </SafeAreaProvider>

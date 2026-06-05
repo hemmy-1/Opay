@@ -9,23 +9,34 @@ import Me from '../screens/Me'
 import Home from '../screens/Home'
 import MyProfile from '../screens/MyProfile'
 import AccountLimit from '../screens/AccountLimit'
+import { useState } from 'react'
 
 
 
 const Stack = createNativeStackNavigator()
 
 const MainNavigator = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='Login' component={Opaylogin} />
-      <Stack.Screen name='TabNavigation' component={TabNavigation} />
-      <Stack.Screen name='Home' component={Home}/>
-      <Stack.Screen name='Rewards' component={Rewards} />
-      <Stack.Screen name='Finance' component={Finance} />
-      <Stack.Screen name='Cards' component={Cards} />
-      <Stack.Screen name='Me' component={Me} />
-      <Stack.Screen name='MyProfile' component={MyProfile} />
-      <Stack.Screen name='Account' component={AccountLimit} />
+      {!isLoggedIn ? (
+        
+        <Stack.Screen name='Login'>
+          {(props) => <Opaylogin {...props} setIsLoggedIn={setIsLoggedIn} />}
+        </Stack.Screen>
+      ) : (
+       
+        <>
+          <Stack.Screen name='TabNavigation' component={TabNavigation} />
+          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Rewards' component={Rewards} />
+          <Stack.Screen name='Finance' component={Finance} />
+          <Stack.Screen name='Cards' component={Cards} />
+          <Stack.Screen name='Me' component={Me} />
+          <Stack.Screen name='MyProfile' component={MyProfile} />
+          <Stack.Screen name='Account' component={AccountLimit} />
+        </>
+      )}
     </Stack.Navigator>
   )
 }
