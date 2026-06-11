@@ -84,7 +84,9 @@ export default function MyProfile({ route }) {
                         flexDirection: 'row', justifyContent: 'space-between'
                     }}>
                         <Text style={{ color: 'white', }}>Email</Text>
-                        <Text style={{ color: 'white' }}>p*gmail.com</Text>
+                        <TouchableOpacity onPress={()=> navigation.navigate('Email')}>
+                        <Text style={{ color: 'white' }}>{"p*gmail.com  >"}</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={{
                         flexDirection: 'row', justifyContent: 'space-between'

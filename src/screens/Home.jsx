@@ -221,7 +221,7 @@ export default function Home() {
                     gap: 60
 
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate('Work')}>
                         <View style={{
                             alignItems: 'center', flexDirection: 'column', gap: 10
                         }}>

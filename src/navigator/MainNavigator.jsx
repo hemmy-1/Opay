@@ -10,6 +10,8 @@ import Home from '../screens/Home'
 import MyProfile from '../screens/MyProfile'
 import AccountLimit from '../screens/AccountLimit'
 import { useState } from 'react'
+import Email from '../screens/Email'
+import Work from '../screens/work'
 
 
 
@@ -35,6 +37,8 @@ const MainNavigator = () => {
           <Stack.Screen name='Me' component={Me} />
           <Stack.Screen name='MyProfile' component={MyProfile} />
           <Stack.Screen name='Account' component={AccountLimit} />
+          <Stack.Screen name='Email' component={Email} />
+          <Stack.Screen name='Work' component={Work} />
         </>
       )}
     </Stack.Navigator>
