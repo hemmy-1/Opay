@@ -11,7 +11,7 @@ import MyProfile from '../screens/MyProfile'
 import AccountLimit from '../screens/AccountLimit'
 import { useState } from 'react'
 import Email from '../screens/Email'
-import Work from '../screens/work'
+import Work from '../screens/Work'
 
 
 
