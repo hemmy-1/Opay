@@ -7,7 +7,6 @@ import * as Clipboard from 'expo-clipboard';
 
 
 
-
 export default function MyProfile({ route }) {
     const navigation = useNavigation()
     const accountNum = "9152543383"
@@ -41,9 +40,11 @@ export default function MyProfile({ route }) {
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginBottom: '10' }} >
                         <Text style={{ color: 'white' }}>Account Tier</Text>
 
-                        <TouchableOpacity onPress={() => navigation.navigate('MainNavigator', { screen: 'AccountLimit' })}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+
                             <Text style={{ color: 'white' }}>{"Tier 3  >"}</Text>
-                        </TouchableOpacity>
+                       </TouchableOpacity>
+                       
 
                     </View>
                 </View>
