@@ -10,20 +10,20 @@ export default function Work() {
             <SafeAreaView style={styles.container}>
                 <Feather name="arrow-left" size={20} color="black" />
 
-                <View style={{ marginBottom: 300 }}>
+                <View style={{ marginBottom: 150, gap:15}}>
                     <TouchableOpacity>
                         <Image source={require('../assets/d-image.png')} style={{ alignSelf: 'center', }} />
                     </TouchableOpacity>
                     <View>
                         <Text style={{ fontSize: 35, fontWeight: '700', textAlign: 'center' }}>Delete your account?</Text>
-                        <Text style={{ textAlign: 'center', color: 'red', fontSize: 20 }}>{"This account cannot be undone. You\nwill permanently lose all your\nprogressand saved data."}
+                        <Text style={{ textAlign: 'center', color: 'red', fontSize: 18 }}>{"This account cannot be undone. You\nwill permanently lose all your\nprogressand saved data."}
                         </Text>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <TouchableOpacity style={{ height: 50, width: '49%', backgroundColor: '#949494', borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ color: 'white', fontSize: 18 }}>
-                            Cancle
+                            Cancel
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{ height: 50, width: '49%', backgroundColor: '#f31212', borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}>
@@ -40,7 +40,7 @@ export default function Work() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d5c27f',
+        backgroundColor: '#ffffff',
         padding: 30,
         justifyContent: 'space-between',
         paddingBottom: 100

@@ -12,6 +12,8 @@ import AccountLimit from '../screens/AccountLimit'
 import { useState } from 'react'
 import Email from '../screens/Email'
 import Work from '../screens/Work'
+import AddMoney from '../screens/AddMoney'
+import TransactionHistory from '../screens/TransactionHistory'
 
 
 
@@ -39,6 +41,8 @@ const MainNavigator = () => {
           <Stack.Screen name='Account' component={AccountLimit} />
           <Stack.Screen name='Email' component={Email} />
           <Stack.Screen name='Work' component={Work} />
+          <Stack.Screen name='AddMoney' component={AddMoney} />
+          <Stack.Screen name='History' component={TransactionHistory} />
         </>
       )}
     </Stack.Navigator>

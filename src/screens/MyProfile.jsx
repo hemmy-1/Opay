@@ -43,8 +43,8 @@ export default function MyProfile({ route }) {
                         <TouchableOpacity onPress={() => navigation.navigate('Account')}>
 
                             <Text style={{ color: 'white' }}>{"Tier 3  >"}</Text>
-                       </TouchableOpacity>
-                       
+                        </TouchableOpacity>
+
 
                     </View>
                 </View>
@@ -84,8 +84,8 @@ export default function MyProfile({ route }) {
                         flexDirection: 'row', justifyContent: 'space-between'
                     }}>
                         <Text style={{ color: 'white', }}>Email</Text>
-                        <TouchableOpacity onPress={()=> navigation.navigate('Email')}>
-                        <Text style={{ color: 'white' }}>{"p*gmail.com  >"}</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('Email')}>
+                            <Text style={{ color: 'white' }}>{"p*gmail.com  >"}</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{

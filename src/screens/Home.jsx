@@ -123,14 +123,12 @@ export default function Home() {
                                 <TouchableOpacity onPress={hideBalance}>
                                     <MaterialCommunityIcons name={isBalanceVisible ? "eye-off-outline" : "eye-outline"} size={24} color="#fff" />
                                 </TouchableOpacity>
-
-
                             </View>
-
-                            <View style={{ gap: 20, marginStart: 70 }}>
+                            
+                            <TouchableOpacity onPress={()=> navigation.navigate('History')} style={{ gap: 20, marginStart: 70 }}>
                                 <Text style={{ color: '#fff', fontSize: 18, }}>Transaction History  {'>'}  </Text>
 
-                            </View>
+                            </TouchableOpacity>
                         </View>
 
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between', paddingHorizontal: 10, }}>
@@ -138,13 +136,13 @@ export default function Home() {
                                 <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
                             </View>
 
-                            <View style={{
+                            <TouchableOpacity onPress={()=> navigation.navigate('AddMoney')} style={{
                                 backgroundColor: '#000000', borderRadius: 30, alignSelf: "flex-end", alignItems: 'center', paddingHorizontal: 6,
                                 justifyContent: 'center', alignContent: 'center',
                                 height: 35, width: 120
                             }}>
                                 <Text style={{ color: '#fff', fontSize: 18 }}>+ add money</Text>
-                            </View>
+                            </TouchableOpacity>
 
 
 
