@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useState } from 'react';
 
 const transactions = [
   {
@@ -44,10 +46,10 @@ const transactions = [
 export default function TransactionHistory() {
 
   const navigation = useNavigation();
-
+  
   const renderTransaction = ({ item }) => {
     const statusStyle = [styles.status, item.status === 'Pending' ? styles.statusPending : styles.statusSuccess];
-
+    
     return (
       <TouchableOpacity style={styles.card} activeOpacity={0.8}>
         <View>
@@ -63,14 +65,68 @@ export default function TransactionHistory() {
       </TouchableOpacity>
     );
   };
+  const [isCategories, setIsCategories] = useState(false)
+  const [isStatus, setIsStatus] = useState(false)
 
+  const allCategories = () => {
+    setIsCategories(!isCategories);
+  }
+
+  const Status = () => {
+    setIsStatus(!isStatus)
+  }
+  
   return (
 
     <SafeAreaProvider>
-      <SafeAreaView style={{ height: 100, width: "100%", backgroundColor: '#2c2b2b', justifyContent: 'center', paddingHorizontal: 20 }}>
-        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
-          onPress={() => navigation.goBack()}>{'<   Account Limit'}</Text>
-          <Text>Download</Text>
+      <SafeAreaView style={{ height: 170, width: "100%", backgroundColor: '#2c2b2b', paddingHorizontal: 20, }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
+            onPress={() => navigation.goBack()}>{'<   Account Limit'}</Text>
+          <Text onPress={() => Alert.alert('Nothing to download yet')} style={{ color: '#0d6528', fontWeight: '800', fontSize: 17, marginTop: 20 }}>Download</Text>
+        </View>
+
+
+<View style={{flexDirection:'row', justifyContent:'space-between'}}>
+
+        <TouchableOpacity onPress={() => setIsCategories(!isCategories)} activeOpacity={0.5} style={[styles.categories, { backgroundColor: isCategories ? '#0d6528' : 'black' }]}>
+          
+            <View style={{ position: 'absolute', top: 12, left: 50 }}>
+
+              <Text style={{ color: 'white' }}>All Categories</Text>
+            </View>
+
+            <View style={{ position: 'absolute', top: 10, left: 170 }}>
+            <Ionicons name={isCategories ? "arrow-up-circle-sharp" : "arrow-down-circle"} size={24} color="white" />
+            </View>
+         
+        </TouchableOpacity>
+
+
+        <TouchableOpacity onPress={() => setIsCategories(!isCategories)} activeOpacity={0.5} style={[styles.categories, { backgroundColor: isCategories ? '#0d6528' : 'black' }]}>
+          
+            <View style={{ position: 'absolute', top: 12, left: 50 }}>
+
+              <Text style={{ color: 'white' }}>All Status</Text>
+            </View>
+
+            <View style={{ position: 'absolute', top: 10, left: 170 }}>
+            <Ionicons name={isCategories ? "arrow-up-circle-sharp" : "arrow-down-circle"} size={24} color="white" />
+            </View>
+         
+        </TouchableOpacity>
+</View>
+
+
+
+
+
+
+
+
+
+
       </SafeAreaView>
 
       <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15 }}>
@@ -103,6 +159,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F8FF',
     paddingHorizontal: 16,
     paddingTop: 16,
+  },
+  categories: {
+    backgroundColor: 'black', width: '48%', height: 40, flexDirection: 'row', justifyContent: 'space-between', marginTop:20, borderRadius:10
+  },
+  backgroundColor:{
+
   },
   header: {
     marginBottom: 20,

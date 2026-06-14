@@ -14,6 +14,7 @@ import Email from '../screens/Email'
 import Work from '../screens/Work'
 import AddMoney from '../screens/AddMoney'
 import TransactionHistory from '../screens/TransactionHistory'
+import VerifyKYC from '../screens/VerifyKYC'
 
 
 
@@ -43,6 +44,7 @@ const MainNavigator = () => {
           <Stack.Screen name='Work' component={Work} />
           <Stack.Screen name='AddMoney' component={AddMoney} />
           <Stack.Screen name='History' component={TransactionHistory} />
+          <Stack.Screen name='Verify' component={VerifyKYC} />
         </>
       )}
     </Stack.Navigator>
