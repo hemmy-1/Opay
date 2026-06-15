@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function Finance() {
+  const navigation = useNavigation()
   return (
     <SafeAreaProvider>
       <SafeAreaView>
@@ -37,11 +39,11 @@ export default function Finance() {
         </View>
 
         <View style={{flex:1, marginTop:50}}>
-        <View style={{height:50, width:'70%', backgroundColor:'#0e083a', alignSelf:'center', borderRadius:10, justifyContent:'center', alignItems:'center', }}>
+        <TouchableOpacity onPress={()=> navigation.navigate('Verify')} style={{height:50, width:'70%', backgroundColor:'#0e083a', alignSelf:'center', borderRadius:10, justifyContent:'center', alignItems:'center', }}>
           <Text style={{color:'white', fontSize:20, fontWeight:'700'}}>
             Contiune
           </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
       </SafeAreaView>
