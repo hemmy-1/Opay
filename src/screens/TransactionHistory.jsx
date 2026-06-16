@@ -1,257 +1,253 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 
 const transactions = [
-  {
-    id: '1',
-    title: 'Transfer to John Doe',
-    amount: '-₦5,200',
-    date: 'Today, 10:34 AM',
-    status: 'Successful',
-  },
-  {
-    id: '2',
-    title: 'Received from Jane Smith',
-    amount: '+₦12,000',
-    date: 'Yesterday, 04:18 PM',
-    status: 'Successful',
-  },
-  {
-    id: '3',
-    title: 'Airtime Purchase',
-    amount: '-₦2,500',
-    date: 'Jun 9, 2026',
-    status: 'Successful',
-  },
-  {
-    id: '4',
-    title: 'Bill Payment',
-    amount: '-₦8,600',
-    date: 'Jun 8, 2026',
-    status: 'Pending',
-  },
-  {
-    id: '5',
-    title: 'Cashback Reward',
-    amount: '+₦850',
-    date: 'Jun 7, 2026',
-    status: 'Successful',
-  },
+  { id: '1', title: 'Transfer to John Doe', amount: '-₦5,200', date: 'Today, 10:34 AM', status: 'Successful', img: require('../assets/aMoney.png') },
+
+  { id: '2', title: 'Received from Jane Smith', amount: '+₦12,000', date: 'Yesterday, 04:18 PM', status: 'Successful' },
+  { id: '3', title: 'Airtime Purchase', amount: '-₦2,500', date: 'Jun 9, 2026', status: 'Successful' },
+  { id: '4', title: 'Bill Payment', amount: '-₦8,600', date: 'Jun 8, 2026', status: 'Pending' },
+  { id: '5', title: 'Cashback Reward', amount: '+₦850', date: 'Jun 7, 2026', status: 'Successful' },
+];
+
+// Simple helper array for the grid categories
+const categoryTags = [
+  'All Categories', 'Bank Deposit', 'Transfer from', 'Transfer to',
+  'Airtime', 'Betting', 'Mobile Data', 'Cash Deposit', 'OWealth',
+  'Add Money', 'OPay Card Payment', 'Electricity', 'TV', 'Gift Card'
+];
+const statusTags = [
+  'All Status', 'Successful', 'Pending', 'Faild', 'To be paid', 'Reversd'
 ];
 
 export default function TransactionHistory() {
-
   const navigation = useNavigation();
-  
+  const [isCategories, setIsCategories] = useState(false);
+  const [isStatus, setIsStatus] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('All Categories');
+
   const renderTransaction = ({ item }) => {
-    const statusStyle = [styles.status, item.status === 'Pending' ? styles.statusPending : styles.statusSuccess];
-    
+    const isPending = item.status === 'Pending';
+
     return (
-      <TouchableOpacity style={styles.card} activeOpacity={0.8}>
-        <View>
-          <Text style={styles.cardTitle}>{item.title}</Text>
-          <Text style={styles.cardDate}>{item.date}</Text>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={{
+     
+         
+          
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          // elevation: 2,
+        }}
+      >
+        <View style={{flexDirection:'row', gap:10}}>
+          <Image source={item.img} style={{height:45, width:45, borderRadius:20, backgroundColor:'white'
+          }}/>
+
+          <View>
+
+            <Text style={{ fontSize: 16, fontWeight: '600', color: '#dbdde4' }}>{item.title}</Text>
+            <Text style={{ marginTop: 4, fontSize: 13, color: '#7B8BA5' }}>{item.date}</Text>
+          </View>
         </View>
-        <View style={styles.cardMeta}>
-          <Text style={styles.cardAmount}>{item.amount}</Text>
-          <View style={statusStyle}>
-            <Text style={styles.statusText}>{item.status}</Text>
+        <View style={{ alignItems: 'flex-end' }}>
+          <Text style={{ fontSize: 16, fontWeight: '700', color: '#121B35' }}>{item.amount}</Text>
+          <View style={{
+            marginTop: 8,
+            paddingHorizontal: 10,
+            paddingVertical: 4,
+            borderRadius: 12,
+            backgroundColor: isPending ? '#FFF4E5' : '#EBF8F1'
+          }}>
+            <Text style={{ fontSize: 12, fontWeight: '600', color: '#33475B' }}>{item.status}</Text>
           </View>
         </View>
       </TouchableOpacity>
     );
   };
-  const [isCategories, setIsCategories] = useState(false)
-  const [isStatus, setIsStatus] = useState(false)
 
-  const allCategories = () => {
-    setIsCategories(!isCategories);
-  }
-
-  const Status = () => {
-    setIsStatus(!isStatus)
-  }
-  
   return (
-
     <SafeAreaProvider>
-      <SafeAreaView style={{ height: 170, width: "100%", backgroundColor: '#2c2b2b', paddingHorizontal: 20, }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      {/* HEADER WRAPPER (Parent container must be position: 'relative') */}
+      <SafeAreaView style={{ width: "100%", backgroundColor: '#2c2b2b', paddingHorizontal: 20, paddingBottom: 15, zIndex: 10, position: 'relative' }}>
 
-          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
-            onPress={() => navigation.goBack()}>{'<   Account Limit'}</Text>
-          <Text onPress={() => Alert.alert('Nothing to download yet')} style={{ color: '#0d6528', fontWeight: '800', fontSize: 17, marginTop: 20 }}>Download</Text>
+        {/* Top Title Bar */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 }}>
+          <Text
+            style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
+            onPress={() => navigation.goBack()}
+          >
+            {'<   Account Limit'}
+          </Text>
+          <Text
+            onPress={() => Alert.alert('Nothing to download yet')}
+            style={{ color: '#0d6528', fontWeight: '800', fontSize: 17, marginTop: 20 }}
+          >
+            Download
+          </Text>
         </View>
 
+        {/* Filter Toggle Buttons */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
-<View style={{flexDirection:'row', justifyContent:'space-between'}}>
+          {/* Categories Button */}
+          <TouchableOpacity
+            onPress={() => { setIsCategories(!isCategories); setIsStatus(false); }}
+            activeOpacity={0.7}
+            style={{
+              width: '48%', height: 42, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 8, gap: 8,
+              backgroundColor: isCategories ? '#0d6528' : 'black'
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 14, fontWeight: '500' }}>All Categories</Text>
+            <Ionicons name={isCategories ? "chevron-up" : "chevron-down"} size={16} color="white" />
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => setIsCategories(!isCategories)} activeOpacity={0.5} style={[styles.categories, { backgroundColor: isCategories ? '#0d6528' : 'black' }]}>
-          
-            <View style={{ position: 'absolute', top: 12, left: 50 }}>
+          {/* Status Button */}
+          <TouchableOpacity
+            onPress={() => { setIsStatus(!isStatus); setIsCategories(false); }}
+            activeOpacity={0.7}
+            style={{
+              width: '48%', height: 42, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 8, gap: 8,
+              backgroundColor: isStatus ? '#0d6528' : 'black'
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 14, fontWeight: '500' }}>All Status</Text>
+            <Ionicons name={isStatus ? "chevron-up" : "chevron-down"} size={16} color="white" />
+          </TouchableOpacity>
+        </View>
 
-              <Text style={{ color: 'white' }}>All Categories</Text>
-            </View>
+        {isCategories && (
+          <View style={{
+            position: 'absolute',
+            top: 170,
 
-            <View style={{ position: 'absolute', top: 10, left: 170 }}>
-            <Ionicons name={isCategories ? "arrow-up-circle-sharp" : "arrow-down-circle"} size={24} color="white" />
-            </View>
-         
-        </TouchableOpacity>
+            backgroundColor: '#222222',
+            borderRadius: 12,
+            padding: 16,
+            flexDirection: 'row',
+            flexWrap: 'wrap', // This naturally forces tags into columns/rows
+            gap: 10,
+            zIndex: 999,
+            elevation: 10,
+            width: 470,
+            borderTopRightRadius: 0,
+            borderTopLeftRadius: 0
+          }}>
+            {categoryTags.map((tag) => {
+              const isSelected = selectedCategory === tag;
+              return (
+                <TouchableOpacity
+                  key={tag}
+                  onPress={() => {
+                    setSelectedCategory(tag);
+                    setIsCategories(false); // Close dropdown on selection
+                  }}
+                  style={{
+                    paddingVertical: 8,
+                    paddingHorizontal: 14,
+                    borderRadius: 20,
+                    backgroundColor: isSelected ? '#0d6528' : '#333333'
+                  }}
+                >
+                  <Text style={{ color: isSelected ? 'white' : '#ccc', fontSize: 13, fontWeight: isSelected ? '700' : '400' }}>
+                    {tag}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
 
+        {isStatus && (
+          <View style={{
+            position: 'absolute',
+            top: 170,
 
-        <TouchableOpacity onPress={() => setIsCategories(!isCategories)} activeOpacity={0.5} style={[styles.categories, { backgroundColor: isCategories ? '#0d6528' : 'black' }]}>
-          
-            <View style={{ position: 'absolute', top: 12, left: 50 }}>
-
-              <Text style={{ color: 'white' }}>All Status</Text>
-            </View>
-
-            <View style={{ position: 'absolute', top: 10, left: 170 }}>
-            <Ionicons name={isCategories ? "arrow-up-circle-sharp" : "arrow-down-circle"} size={24} color="white" />
-            </View>
-         
-        </TouchableOpacity>
-</View>
-
-
-
-
-
-
-
-
-
-
+            backgroundColor: '#222222',
+            borderRadius: 12,
+            padding: 16,
+            flexDirection: 'row',
+            flexWrap: 'wrap', // This naturally forces tags into columns/rows
+            gap: 10,
+            zIndex: 999,
+            elevation: 10,
+            width: 470,
+            borderTopRightRadius: 0,
+            borderTopLeftRadius: 0
+          }}>
+            {statusTags.map((tag) => {
+              const isSelected = selectedCategory === tag;
+              return (
+                <TouchableOpacity
+                  key={tag}
+                  onPress={() => {
+                    setSelectedCategory(tag);
+                    setIsCategories(false); // Close dropdown on selection
+                  }}
+                  style={{
+                    paddingVertical: 8,
+                    paddingHorizontal: 14,
+                    borderRadius: 20,
+                    backgroundColor: isSelected ? '#0d6528' : '#333333'
+                  }}
+                >
+                  <Text style={{ color: isSelected ? 'white' : '#ccc', fontSize: 13, fontWeight: isSelected ? '700' : '400' }}>
+                    {tag}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
       </SafeAreaView>
 
-      <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15 }}>
+      {/* LOWER SCROLLABLE CONTENT */}
+      <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15, paddingTop: 15 }}>
+        <View style={{ flex: 1, backgroundColor: '#262626', paddingHorizontal: 16, paddingTop: 16, borderRadius: 10 }}>
 
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Transaction History</Text>
-            <Text style={styles.subtitle}>Review your latest Opay-style activity</Text>
+          <View style={{ marginBottom: 20 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+
+                <Text style={{ fontSize: 26, fontWeight: '700', color: '#ffffff' }}>Jun 2026</Text>
+                <Ionicons name="chevron-down" size={16} color="white" />
+              </View>
+
+              <TouchableOpacity style={{ backgroundColor: '#0d6528', height: 27, width: 70, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
+                <Text style={{ color: 'white', fontWeight: '700' }}>Analysis</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 20 }}>
+              <Text style={{ marginTop: 6, fontSize: 14, color: '#5C6B8A' }}>in
+                <Text style={{ color: '#fff', paddingStart: 10 }} >  ₦11,234.54</Text>
+              </Text>
+              <Text style={{ marginTop: 6, fontSize: 14, color: '#5C6B8A' }}>out
+                <Text style={{ color: '#fff', paddingStart: 10 }} >  ₦6,543,234.54</Text>
+              </Text>
+            </View>
           </View>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>Total transactions</Text>
-            <Text style={styles.summaryValue}>{transactions.length}</Text>
+
+          <View style={{ backgroundColor: '#FFFFFF', borderRadius: 16, padding: 18, marginBottom: 18, elevation: 4 }}>
+            <Text style={{ color: '#7B8BA5', fontSize: 14, marginBottom: 8 }}>Total transactions</Text>
+            <Text style={{ fontSize: 32, fontWeight: '700', color: '#0D3F7A' }}>{transactions.length}</Text>
           </View>
+
           <FlatList
             data={transactions}
             keyExtractor={(item) => item.id}
             renderItem={renderTransaction}
-            contentContainerStyle={styles.listContent}
+            contentContainerStyle={{ paddingBottom: 24 }}
             showsVerticalScrollIndicator={false}
           />
         </View>
       </View>
     </SafeAreaProvider>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F8FF',
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  categories: {
-    backgroundColor: 'black', width: '48%', height: 40, flexDirection: 'row', justifyContent: 'space-between', marginTop:20, borderRadius:10
-  },
-  backgroundColor:{
-
-  },
-  header: {
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: '700',
-    color: '#121B35',
-  },
-  subtitle: {
-    marginTop: 6,
-    fontSize: 14,
-    color: '#5C6B8A',
-  },
-  summaryCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 18,
-    marginBottom: 18,
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 4,
-  },
-  summaryLabel: {
-    color: '#7B8BA5',
-    fontSize: 14,
-    marginBottom: 8,
-  },
-  summaryValue: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#0D3F7A',
-  },
-  listContent: {
-    paddingBottom: 24,
-  },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 12,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 2,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1E2A4D',
-  },
-  cardDate: {
-    marginTop: 4,
-    fontSize: 13,
-    color: '#7B8BA5',
-  },
-  cardMeta: {
-    alignItems: 'flex-end',
-  },
-  cardAmount: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#121B35',
-  },
-  status: {
-    marginTop: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  statusSuccess: {
-    backgroundColor: '#EBF8F1',
-  },
-  statusPending: {
-    backgroundColor: '#FFF4E5',
-  },
-  statusText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#33475B',
-  },
-});
-
-
+}
