@@ -82,14 +82,13 @@ export default function Home() {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container1}>
 
-                <StatusBar backgroundColor={'#3006c7'} barStyle={'dark-content'} />
+               
                 <View style={{
-                    // flexWrap: 'wrap',
-                    flexDirection: 'row', gap: 20,
+                    flexDirection: 'row', 
                     backgroundColor: '#25292e00',
                     borderRadius: 18, padding: 10,
                     alignItems: 'center',
-                    marginVertical: 10
+                    marginVertical: 10, justifyContent:'space-between'
 
                 }}>
                     <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
@@ -98,14 +97,14 @@ export default function Home() {
                         </TouchableOpacity>
                         <Text style={{ color: '#ffffff', fontSize: 24, }}>hi, hemmy</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', gap: 20, marginLeft: 'auto' }}>
+                    <View style={{ flexDirection: 'row', gap: 20,}}>
                         <Feather name="headphones" size={24} color="#ffffff" />
                         <AntDesign name="scan" size={24} color="#ffffff" />
                         <Ionicons name="notifications" size={24} color="#ffffff" />
                     </View>
                 </View>
 
-                <View style={{ backgroundColor: '#012b0e', height: 160, borderRadius: 18 }}>
+                <View style={{ backgroundColor: '#012b0e', height: 160, width:'100%', borderWidth:1, borderRadius:20, gap:15}}>
                     <View style={{
                         flexWrap: 'wrap',
                         gap: 20,
@@ -115,7 +114,7 @@ export default function Home() {
                         // alignItems: 'center',
                         height: 110,
                     }}>
-                        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+                        <View style={{ flexDirection: 'row', justifyContent:'space-between', alignItems: 'center' }}>
                             <View
                                 style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
                                 <MaterialCommunityIcons name="guitar-pick" size={24} color="#fff" />
@@ -131,7 +130,7 @@ export default function Home() {
                             </TouchableOpacity>
                         </View>
 
-                        <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between', paddingHorizontal: 10, }}>
+                        <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between',  }}>
                             <View>
                                 <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
                             </View>
@@ -150,7 +149,7 @@ export default function Home() {
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 20, flexDirection: 'row', gap: 15, alignContent: 'center', justifyContent: 'space-between' }}>
+                    <View style={{ alignItems: 'center', paddingHorizontal: 20, flexDirection: 'row', gap: 15, alignContent: 'center', justifyContent: 'space-between', }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
                             <View style={{ backgroundColor: '#02210b', height: 25, width: 25, justifyContent: 'center', borderRadius: 10, alignItems: 'center' }}>
                                 <FontAwesome name="bank" size={15} color="#0d6528" />
