@@ -241,7 +241,7 @@ export default function Home() {
                             <Text style={{ color: '#ffffff', fontSize: 18 }}>To Bank</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate('Withdraw')}>
                         <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                             <Ionicons name="arrow-up-left-box" size={24} color="white" style={{
                                 backgroundColor: 'black',

@@ -208,7 +208,6 @@ export default function TransactionHistory() {
         )}
       </SafeAreaView>
 
-      {/* LOWER SCROLLABLE CONTENT */}
       <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15, paddingTop: 15 }}>
         <View style={{ flex: 1, backgroundColor: '#262626', paddingHorizontal: 16, paddingTop: 16, borderRadius: 10 }}>
 

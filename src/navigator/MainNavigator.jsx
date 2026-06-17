@@ -15,6 +15,7 @@ import Work from '../screens/Work'
 import AddMoney from '../screens/AddMoney'
 import TransactionHistory from '../screens/TransactionHistory'
 import VerifyKYC from '../screens/VerifyKYC'
+import Withdraw from '../screens/Withdraw'
 
 
 
@@ -45,6 +46,7 @@ const MainNavigator = () => {
           <Stack.Screen name='AddMoney' component={AddMoney} />
           <Stack.Screen name='History' component={TransactionHistory} />
           <Stack.Screen name='Verify' component={VerifyKYC} />
+          <Stack.Screen name='Withdraw' component={Withdraw} />
         </>
       )}
     </Stack.Navigator>
