@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import {  SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 
 export default function AddMoney() {
@@ -9,7 +9,7 @@ export default function AddMoney() {
         <SafeAreaProvider>
             <SafeAreaView style={{ height: 100, width: "100%", backgroundColor: '#2c2b2b', justifyContent: 'center', paddingHorizontal: 20 }}>
                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
-                    onPress={() => navigation.goBack()}>{'<   Account Limit'}</Text>
+                    onPress={() => navigation.goBack()}>{'<   Add Money'}</Text>
             </SafeAreaView>
 
             <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15 }}>

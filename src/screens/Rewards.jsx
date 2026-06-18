@@ -82,10 +82,9 @@ export default function Rewards() {
 
               <View style={{ flexDirection: 'column' }}>
 
-                <Touchabl
-                eOpacity onPress={() => setIsModalOn(false)} style={{ width: '100%', justifyContent: 'flex-end', paddingLeft: 220 }}>
+                <TouchableOpacity onPress={() => setIsModalOn(false)} style={{ width: '100%', justifyContent: 'flex-end', paddingLeft: 220 }}>
                   <MaterialIcons name="cancel" size={24} color="black" style={{}} />
-                </Touchabl>
+                </TouchableOpacity>
 
                 <View>
                   <Text style={{ textAlign: 'center', fontSize: 22, fontWeight: "800" }}>

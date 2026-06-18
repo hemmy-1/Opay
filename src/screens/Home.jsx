@@ -7,8 +7,9 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+
 
 
 export default function Home() {
@@ -119,8 +120,9 @@ export default function Home() {
                                 style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
                                 <MaterialCommunityIcons name="guitar-pick" size={24} color="#fff" />
                                 <Text style={{ color: '#fff', fontSize: 18, }}>Available balance</Text>
-                                <TouchableOpacity onPress={hideBalance}>
-                                    <MaterialCommunityIcons name={isBalanceVisible ? "eye-off-outline" : "eye-outline"} size={24} color="#fff" />
+                                <TouchableOpacity onPress={() => setIsBalanceVisible(!isBalanceVisible)}>
+                                    {isBalanceVisible ? (<MaterialCommunityIcons name="eye-outline" size={24} color="#fff" />) : (<MaterialCommunityIcons name="eye-off-outline" size={24} color="#fff" />)}
+                                    
                                 </TouchableOpacity>
                             </View>
                             
@@ -132,7 +134,7 @@ export default function Home() {
 
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between',  }}>
                             <View>
-                                <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? "*********" : ("9,876,543.21")}  {'>'}</Text>
+                                <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>{isBalanceVisible ? ("*********") : ("9,876,543.21")}  {'>'}</Text>
                             </View>
 
                             <TouchableOpacity onPress={()=> navigation.navigate('AddMoney')} style={{
@@ -231,7 +233,7 @@ export default function Home() {
                             <Text style={{ color: '#ffffff', fontSize: 18 }}>To Opay</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ToBank')}>
                         <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                             <FontAwesome name="bank" size={24} color="white" style={{
                                 backgroundColor: 'black',
