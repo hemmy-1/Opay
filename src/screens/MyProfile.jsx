@@ -14,7 +14,10 @@ export default function MyProfile({ route }) {
         await Clipboard.setStringAsync(accountNum)
         Alert.alert("Copied!", "Account number copied to clipboard.");
     }
-    const logoImage = route.params
+    // const logoImage = route.params
+    // const setTempUsername = route.params
+
+    const { logo, name } = route.params || {};
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ height: 100, width: "100%", backgroundColor: '#2c2b2b', justifyContent: 'center', paddingHorizontal: 20 }}>
@@ -25,7 +28,7 @@ export default function MyProfile({ route }) {
             <View style={styles.container}>
                 <View style={{ flexWrap: 'wrap', width: '100%', backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 15, gap: 40 }}>
                     <View style={{ alignSelf: 'center', alignItems: 'center', }}>
-                        <Image source={logoImage} style={{ height: 80, width: 80, borderRadius: 50 }} resizeMode='cover' />
+                        <Image source={logo} style={{ height: 80, width: 80, borderRadius: 50 }} resizeMode='cover' />
                         <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>hemmy</Text>
                     </View>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }} >
@@ -54,7 +57,7 @@ export default function MyProfile({ route }) {
                         flexDirection: 'row', justifyContent: 'space-between'
                     }}>
                         <Text style={{ color: 'white', }}>Full Name</Text>
-                        <Text style={{ color: 'white' }}>Adegbola Emmanuel T.</Text>
+                        <Text style={{ color: 'white' }}>{name}</Text>
                     </View>
                     <View style={{
                         flexDirection: 'row', justifyContent: 'space-between'

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Modal, TouchableOpacity, TextInput } from 'react-native'
 import { use, useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -30,7 +30,7 @@ export default function Rewards() {
             {"You transfer of ₦[amount] to [Recivers's Name]\nhas been completed successfully."}
           </Text>
 
-          <View style={{ gap: 20, padding:20}}>
+          <View style={{ gap: 20, padding: 20 }}>
 
             <Text style={{ fontSize: 20, fontWeight: '800', marginTop: 30 }}>Transaction Details</Text>
 
@@ -66,7 +66,7 @@ export default function Rewards() {
           </View>
         </View>
 
-        <TouchableOpacity onPress={()=> setIsModalOn(true)} style={{ backgroundColor: 'black', justifyContent: 'center', alignItems: 'center', height: 50, width: 200, alignSelf: 'center', marginTop: 30, borderRadius: 10, flexDirection:'row', gap:'10' }}>
+        <TouchableOpacity onPress={() => setIsModalOn(true)} style={{ backgroundColor: 'black', justifyContent: 'center', alignItems: 'center', height: 50, width: 200, alignSelf: 'center', marginTop: 30, borderRadius: 10, flexDirection: 'row', gap: '10' }}>
           <MaterialCommunityIcons name="send" size={24} color="white" />
           <Text style={{ color: 'white', fontSize: 20, fontWeight: '700' }}>Share Receipt</Text>
         </TouchableOpacity>
@@ -74,66 +74,32 @@ export default function Rewards() {
 
 
         <Modal
+          visible={isModalOn}
           animationType="slide"
           transparent={true}
-          visible={isModalOn}>
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-            <View style={{ flexWrap: 'wrap', width: '65%', backgroundColor: 'white', borderRadius: 20, padding: 20, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+          onRequestClose={() => setIsModalOn(false)}>
+          <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.75)', justifyContent: 'center', padding: 20 }}>
+            <View style={{ backgroundColor: '#262626', borderRadius: 20, padding: 24, borderWidth: 1, borderColor: '#333' }}>
 
-              <View style={{ flexDirection: 'column' }}>
+              <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold', marginBottom: 18 }}>Configure Identity Twist</Text>
 
-                <TouchableOpacity onPress={() => setIsModalOn(false)} style={{ width: '100%', justifyContent: 'flex-end', paddingLeft: 220 }}>
-                  <MaterialIcons name="cancel" size={24} color="black" style={{}} />
+              <Text style={{ color: '#8E8E93', fontSize: 12, marginBottom: 6 }}>Set Nickname</Text>
+              <TextInput value={tempNickname} onChangeText={setTempNickname} style={{ backgroundColor: '#1A1A1A', color: '#FFF', padding: 12, borderRadius: 8, marginBottom: 16, fontSize: 14 }} />
+
+              <Text style={{ color: '#8E8E93', fontSize: 12, marginBottom: 6 }}>Set Username</Text>
+              <TextInput value={tempUsername} onChangeText={setTempUsername} autoCapitalize="none" style={{ backgroundColor: '#1A1A1A', color: '#FFF', padding: 12, borderRadius: 8, marginBottom: 16, fontSize: 14 }} />
+
+              <Text style={{ color: '#8E8E93', fontSize: 12, marginBottom: 6 }}>Set Desired Balance (₦)</Text>
+              <TextInput value={tempBalance} onChangeText={setTempBalance} keyboardType="numeric" style={{ backgroundColor: '#1A1A1A', color: '#FFF', padding: 12, borderRadius: 8, marginBottom: 24, fontSize: 14 }} />
+
+              <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 12 }}>
+                <TouchableOpacity onPress={() => setIsModalOpen(false)} style={{ paddingVertical: 10, paddingHorizontal: 16 }}>
+                  <Text style={{ color: '#8E8E93', fontWeight: '500' }}>Discard</Text>
                 </TouchableOpacity>
-
-                <View>
-                  <Text style={{ textAlign: 'center', fontSize: 22, fontWeight: "800" }}>
-                    Confirm Transfer
-                  </Text>
-                  <Text style={{ textAlign: 'center', fontSize: 12 }}>
-                    {"You are about to send\n₦(amount) to (Recivers's Name).\nPlease confirm the details before proceeding"}
-                  </Text>
-
-                  <View style={{ gap: 8 }}>
-
-                    <Text style={{ fontSize: 16, fontWeight: '800', marginTop: 30 }}>Transaction Details</Text>
-
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text>Receiver</Text>
-                      <Text>[Receiver's Name]</Text>
-                    </View>
-
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text>Account Number</Text>
-                      <Text>[Account No.]</Text>
-                    </View>
-
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text>Bank</Text>
-                      <Text>[Bank Name]</Text>
-                    </View>
-
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text>Receiver</Text>
-                      <Text>#[amount]</Text>
-                    </View>
-
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text>Date:</Text>
-                      <Text>10/09/2025</Text>
-                    </View>
-
-                  </View>
-                </View>
-
-                <TouchableOpacity style={{ backgroundColor: 'black', justifyContent: 'center', alignItems: 'center', height: 45, width: 200, alignSelf: 'center', marginTop: 30, borderRadius: 10 }}>
-                  <Text style={{ color: 'white', fontSize: 20, fontWeight: '700' }}>Contiune</Text>
+                <TouchableOpacity onPress={handleSaveProfile} style={{ backgroundColor: '#0d6528', paddingVertical: 10, paddingHorizontal: 22, borderRadius: 8 }}>
+                  <Text style={{ color: '#00C853', fontWeight: 'bold' }}>Save Profile</Text>
                 </TouchableOpacity>
               </View>
-
-
-
-
 
             </View>
           </View>
