@@ -153,8 +153,7 @@ export default function Home() {
                     </View>
                 </View>
 
-                {/* MAIN WALLET METRICS WINDOW */}
-                <View style={{ backgroundColor: '#012b0e', height: 160, width: '100%', borderWidth: 1, borderRadius: 20, gap: 15 }}>
+                <View style={{ backgroundColor: '#11382B', height: 160, width: '100%', borderWidth: 1, borderRadius: 20, gap: 15 }}>
                     <View style={{
                         flexWrap: 'wrap',
                         gap: 20,
