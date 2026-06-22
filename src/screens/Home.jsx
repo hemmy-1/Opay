@@ -234,7 +234,7 @@ export default function Home() {
                     height: 110, justifyContent: 'space-around', paddingHorizontal: 20,
                     marginHorizontal: 10, flexDirection: 'row', gap: 60, marginTop: 10
                 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Work')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ToOpay')}>
                         <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                             <MaterialIcons name="perm-contact-calendar" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                             <Text style={{ color: '#ffffff', fontSize: 18 }}>To Opay</Text>
@@ -248,7 +248,7 @@ export default function Home() {
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Withdraw')}>
                         <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
-                            <MaterialCommunityIcons name="arrow-up-left-bold-box" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
+                            <Ionicons name="arrow-up-left-box" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                             <Text style={{ color: '#ffffff', fontSize: 18 }}>Withdraw</Text>
                         </View>
                     </TouchableOpacity>
