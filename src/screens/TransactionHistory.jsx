@@ -83,7 +83,7 @@ export default function TransactionHistory() {
             style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
             onPress={() => navigation.goBack()}
           >
-            {'<   Account Limit'}
+            {'<   Transacton History'}
           </Text>
           <Text
             onPress={() => Alert.alert('Nothing to download yet')}
