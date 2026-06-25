@@ -129,10 +129,7 @@ export default function Rewards() {
   );
 }
 
-const styles = StyleSheet.create({})
 
-//fuction deleration and array
-//array methods
 
 
 const styles = StyleSheet.create({

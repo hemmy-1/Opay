@@ -175,7 +175,7 @@ export default function Home() {
                                 </TouchableOpacity>
                             </View>
 
-                            <TouchableOpacity onPress={() => navigation.navigate('History')} style={{ gap: 20, marginStart: 70 }}>
+                            <TouchableOpacity onPress={() => navigation.navigate('History')} >
                                 <Text style={{ color: '#fff', fontSize: 18 }}>Transaction History {'>'} </Text>
                             </TouchableOpacity>
                         </View>
