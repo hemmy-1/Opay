@@ -96,19 +96,11 @@ export default function Cards() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{ backgroundColor: '#000000', flex: 1, }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "100%", backgroundColor: '#000000', padding: 20 }}>
-          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25, }}>Finance</Text>
+      <SafeAreaView style={{ backgroundColor: '#111214', flex: 1, }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "100%", backgroundColor: '#111214', padding: 20 }}>
+          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25, }}>Cards</Text>
           <Text style={{ color: '#00B986', fontWeight: 'bold' }}>Q&A</Text>
         </View>
-
-
-
-
-
-
-
-
 
 
 
