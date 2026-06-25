@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Opaylogin({ setIsLoggedIn }) {
@@ -96,7 +96,7 @@ export default function Opaylogin({ setIsLoggedIn }) {
           onPress={handleLogin}>
 
           <View style={{
-            height: 50, width: 350, backgroundColor: '#1DCF9F', borderWidth: 2,
+            paddingHorizontal:150, backgroundColor: '#1DCF9F', borderWidth: 2, paddingVertical:10,
             alignSelf: 'center',
             borderRadius: 30,
             //alignItems: 'center',
@@ -137,20 +137,17 @@ const style = StyleSheet.create({
 
   },
   disabledButton: {
-    height: 50,
-    width: 350,
+    
     backgroundColor: '#1dcfa038',
-    borderWidth: 2,
     alignSelf: 'center',
     borderRadius: 30,
     //alignItems: 'center',
     justifyContent: 'center'
   },
   buttonText: {
-    height: 50,
-    width: 350,
+    
     backgroundColor: '#1dcfa038',
-    borderWidth: 2,
+    
     alignSelf: 'center',
     borderRadius: 30,
     //alignItems: 'center',

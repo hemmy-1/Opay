@@ -6,12 +6,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 
 const transactions = [
-  { id: '1', title: 'Transfer to John Doe', amount: '-₦5,200', date: 'Today, 10:34 AM', status: 'Successful', img: require('../assets/aMoney.png') },
+  { id: '1', title: 'Add Money-Bank Card', amount: '₦1,000.00', date: 'Jun 12th, 10:34 AM', status: 'Successful', img: require('../assets/aMoney.png') },
 
-  { id: '2', title: 'Received from Jane Smith', amount: '+₦12,000', date: 'Yesterday, 04:18 PM', status: 'Successful' },
-  { id: '3', title: 'Airtime Purchase', amount: '-₦2,500', date: 'Jun 9, 2026', status: 'Successful' },
-  { id: '4', title: 'Bill Payment', amount: '-₦8,600', date: 'Jun 8, 2026', status: 'Pending' },
-  { id: '5', title: 'Cashback Reward', amount: '+₦850', date: 'Jun 7, 2026', status: 'Successful' },
+  { id: '2', title: 'Bonus from Airtime Purchase', amount: '+₦50.00', date: 'Jun 12th, 04:18:54', status: 'Successful', img: require('../assets/gift.png') },
+  { id: '3', title: 'Airtime', amount: '-₦5,000', date: 'Jun 9th,10:00:23', status: 'Successful', img: require('../assets/phone.png') },
+  { id: '4', title: 'Add Money-Bank Card', amount: '+₦543,600', date: 'Jun 29th, 08:22:81', status: 'Pending', img: require('../assets/aMoney.png') },
+  { id: '5', title: 'Fixed Payout', amount: '₦492,567.88', date: 'Jun 14th, 02:44:01', status: 'Successful', img: require('../assets/bank.png') },
 ];
 
 // Simple helper array for the grid categories
@@ -37,18 +37,18 @@ export default function TransactionHistory() {
       <TouchableOpacity
         activeOpacity={0.8}
         style={{
-     
-         
-          
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          // elevation: 2,
+          marginVertical:6
+          
         }}
       >
-        <View style={{flexDirection:'row', gap:10}}>
-          <Image source={item.img} style={{height:45, width:45, borderRadius:20, backgroundColor:'white'
-          }}/>
+        <View style={{ flexDirection: 'row', gap: 10 }}>
+          <View style={{height: 40, width: 40, borderRadius: 20, backgroundColor: 'white', justifyContent:'center', alignItems:'center'}}>
+            <Image source={item.img} style={{
+              height: 25, width: 25, }} />
+          </View>
 
           <View>
 
@@ -83,7 +83,7 @@ export default function TransactionHistory() {
             style={{ color: 'white', fontWeight: 'bold', fontSize: 17, marginTop: 20 }}
             onPress={() => navigation.goBack()}
           >
-            {'<   Account Limit'}
+            {'<   Transacton History'}
           </Text>
           <Text
             onPress={() => Alert.alert('Nothing to download yet')}
@@ -208,7 +208,6 @@ export default function TransactionHistory() {
         )}
       </SafeAreaView>
 
-      {/* LOWER SCROLLABLE CONTENT */}
       <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal: 15, paddingTop: 15 }}>
         <View style={{ flex: 1, backgroundColor: '#262626', paddingHorizontal: 16, paddingTop: 16, borderRadius: 10 }}>
 
@@ -234,10 +233,7 @@ export default function TransactionHistory() {
             </View>
           </View>
 
-          <View style={{ backgroundColor: '#FFFFFF', borderRadius: 16, padding: 18, marginBottom: 18, elevation: 4 }}>
-            <Text style={{ color: '#7B8BA5', fontSize: 14, marginBottom: 8 }}>Total transactions</Text>
-            <Text style={{ fontSize: 32, fontWeight: '700', color: '#0D3F7A' }}>{transactions.length}</Text>
-          </View>
+         <View style={{width:'100%', borderWidth:0.5, borderColor:'#888'}}/>
 
           <FlatList
             data={transactions}

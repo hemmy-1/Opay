@@ -88,6 +88,7 @@ export default function Rewards() {
               </Text>
 
             </View>
+            <Text style={{ fontWeight: '300', fontSize: 12 }}>The payment will be deducted from your wallet.</Text>
           </View>
         </View>
 
@@ -128,7 +129,10 @@ export default function Rewards() {
   );
 }
 
+const styles = StyleSheet.create({})
 
+//fuction deleration and array
+//array methods
 
 
 const styles = StyleSheet.create({
