@@ -1,70 +1,141 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-
-
+import { StyleSheet, Text, View, Modal, TouchableOpacity, Image, FlatList } from 'react-native'
+import { use, useState } from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Entypo from '@expo/vector-icons/Entypo';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 export default function Rewards() {
-  return (
-    <View style={{
-      flex: 1, paddingTop: 170, paddingHorizontal: 20,
-    }}>
-      <Text style={{ fontWeight: '800', fontSize: 20 }}>Property Verification Checklist</Text>
 
-      <Text style={{ marginTop: 10 }}>Your safety is out priority. complete all required verification steps to confirm the proerty's authenticty and document befor making payment'</Text>
+  const [isModalOn, setIsModalOn] = useState(false);
+  const Data = [
+    {
+      id: 1,
+      image: require('../assets/icons8-friends-100.png'),
+      title: 'Friday Bouns'
+    },
+    {
+      id: 2,
+      image: require('../assets/icons8-money-100.png'),
+      title: 'Referral Friends'
+    },
+    {
+      id: 3,
+      image: require('../assets/icons8-star-100.png'),
+      title: 'Play4achild'
+    },
+    {
+      id: 4,
+      image: require('../assets/icons8-voucher-100 (1).png'),
+      title: 'Voucher Pack'
+    },
+  ]
 
-
-      <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center', columnGap: 20, marginTop: 50 }}>
-        <View style={{ alignItems: 'center' }}>
-          <Image source={require('../assets/checked.jpeg')} />
-          <View style={{ height: 50, borderStyle: 'dashed', borderWidth: 1, width: 0, marginTop: 10 }} />
-          <View style={{ height: 20, width: 20, borderWidth: 1, borderRadius: 10, marginTop: 10 }} />
-          <View style={{ height: 50, borderStyle: 'dashed', borderWidth: 1, width: 0, marginTop: 10 }} />
-          <View style={{ height: 20, width: 20, borderWidth: 1, borderRadius: 10, marginTop: 10 }} />
-        </View>
-
-        <View style={{ gap: 30 }}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', }}>{"Schedule a Property Inspection\n"}
-            <Text style={{ fontSize: 14, fontWeight: 'normal', }}>{"Visit the property or arrange a physical inspection to verify its condition and location."}</Text>
-          </Text>
-
-          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{"Review Title and Ownership Documents\n"}
-            <Text style={{ fontSize: 14, fontWeight: 'normal' }}>{"Examine all legal document to confirm property ownership and confirm the seller or landlord's authority over the property."}</Text>
-          </Text>
-
-          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{"Confirm Terms and Conditions\n"}
-            <Text style={{ fontSize: 14, fontWeight: 'normal' }}>{"Ensure you unerstand the purchase, lease, or rental terms before proceeding."}</Text>
-          </Text>
-        </View>
-
-      </View>
-
-
-      <View style={{ flex: 1, justifyContent: 'space-around' }}>
-
-        <View style={{gap:40}}>
-
-          <View style={{ height: 40, width: 40, backgroundColor: '#4122cd42', borderRadius: 20, justifyContent: 'center', alignItems: 'center', padding: 8 , alignSelf:'flex-end',}}>
-            <Image style={{ height: '100%', width: '100%' }} source={require('../assets/call.png')} />
+  const renderItem = ({ item }) => (
+    <View style={{ marginLeft:10 }}>
+      <View style={{ height: 80, width: 80, borderRadius: 5, backgroundColor: '#383737', alignItems:'center', justifyContent:'center' }}>
+        
+        <View  style={{alignItems:'center', justifyContent:'center', }}>
+          <View style={{height:35, width:35, backgroundColor:'#393535', alignItems:'center', justifyContent:'center', borderRadius:5}}>
+        <Image source={item.image} style={{ height: 30, width: 30, }} />
           </View>
-          <View style={{ alignSelf: 'center', alignItems: 'center', }}>
+        <Text style={{ color: 'white', fontSize:10 }}>{item.title}</Text>
+        </View>
+      </View>
+    </View>
+  )
 
-            <View style={{ paddingHorizontal: 100, paddingVertical: 12, borderRadius: 10, backgroundColor: 'black', alignSelf: 'center' }}><Text style={{ color: 'white', fontSize: 20, fontWeight: '800' }}>Proceed
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <View style={{ height: 200, width: "100%", backgroundColor: '#0c542c', padding: 20, borderBottomRightRadius:20, borderBottomLeftRadius:20 }}>
+          <View style={{ flexDirection: "row", alignItems: 'center', gap: 10, justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 20, color: 'white' }}>
+              Rewards
             </Text>
+            <View style={{ width: 30, height: 30, borderRadius: 30, borderWidth: 2, justifyContent: 'center', alignItems: 'center', borderColor: 'white' }}>
+              <Entypo name="dots-three-horizontal" size={18} color="white" />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, justifyContent: 'space-between', marginTop: 20 }}>
+            <View style={{ flexDirection: "row", alignitems: 'center', gap: 10, justifycontent: 'center' }}>
+              <Text style={{ fontsize: 16, color: 'white' }}>
+                Cashback
+              </Text>
+              <EvilIcons name="question" size={24} color="black" />
+            </View>
+
+            <View>
+              <Text style={{ fontsize: 16, color: 'white' }}>
+                Voucher
+              </Text>
+            </View>
+
+          </View>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, justifyContent: 'space-between', marginTop: 20 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, justifycontent: 'center' }}>
+              <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
+              <Text style={{ frontsize: 16, color: 'white' }}>
+                # 436.90
+              </Text>
+            </View>
+            <View>
+              <Text style={{ fontsize: 16, color: 'white' }}>
+                #0
+              </Text>
+
             </View>
             <Text style={{ fontWeight: '300', fontSize: 12 }}>The payment will be deducted from your wallet.</Text>
           </View>
         </View>
 
-      </View>
+
+        <View style={{position:'relative', top:-50}}>
+          <FlatList
+            data={Data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal
+          />
+        </View>
+
+        <Text style={{ fontsize: 16, color: 'white' }}>Daily Bonus</Text>
+
+        <View style={{ padding: 10, }}>
+          <View style={{ backgroundColor: 'gray', height: '70%', width: '100%', borderRadius: 15 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10, }}>
+              <Text>Glo Airtime</Text>
+              <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
+              <Text>+Up to 6%</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10, }}>
+              <Text>Buy Airtime and get up to 6% cashback</Text>
+              <View>
+                <View style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 15 }}>
+                  <Text>Go</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+
+      </SafeAreaView>
+    </SafeAreaProvider>
 
 
-
-
-
-    </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
 
-//fuction deleration and array
-//array methods
 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
+
+  },
+})
