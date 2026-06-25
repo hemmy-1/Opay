@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Rewards from '../screens/Rewards';
 import Home from '../screens/Home';
 import Finance from '../screens/Finance';
+import Cards from '../screens/Cards';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,6 +14,7 @@ export default function TabNavigation() {
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Rewards" component={Rewards} />
             <Tab.Screen name="Finance" component={Finance} />
+            <Tab.Screen name="Cards" component={Cards} />
 
         </Tab.Navigator>
     )
