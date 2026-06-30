@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Feather from '@expo/vector-icons/Feather';
 import { useState } from 'react';
-import LucideIcon from 'lucide-react-native';
+
 
 
 export default function Cards() {
@@ -12,7 +12,7 @@ export default function Cards() {
   const benefitsData = [
     {
       id: '1',
-      imageSource: require('../assets/thunder.png'), 
+      imageSource: require('../assets/thunder.png'),
       title: 'Instant Access',
       descPrefix: 'Use it instantly after ',
       highlightText: 'quick application',
@@ -62,11 +62,11 @@ export default function Cards() {
         width: 48,
         height: 48,
         borderRadius: 14,
-        backgroundColor: '#1E1E1E', 
+        backgroundColor: '#1E1E1E',
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 16,
-        overflow: 'hidden' 
+        overflow: 'hidden'
       }}>
         <Image
           source={item.imageSource}
@@ -102,126 +102,119 @@ export default function Cards() {
           <Text style={{ color: '#00B986', fontWeight: 'bold' }}>Q&A</Text>
         </View>
 
+        <ScrollView>
 
+          <View style={{ flex: 1, backgroundColor: '#111214', paddingHorizontal: 16, paddingTop: 40 }}>
 
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              marginBottom: 20,
+              height: 50
+            }}>
 
+              {/* virtual card */}
+              <TouchableOpacity
+                onPress={() => setActiveTab('virtual')}
+                style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%', position: 'relative' }}>
 
-
-
-
-
-
-
-        <View style={{ flex: 1, backgroundColor: '#111214', paddingHorizontal: 16, paddingTop: 40 }}>
-
-          <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            marginBottom: 20,
-            height: 50
-          }}>
-
-            {/* virtual card */}
-            <TouchableOpacity
-              onPress={() => setActiveTab('virtual')}
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%', position: 'relative' }}>
-
-              <View style={{
-                position: 'absolute',
-                top: -2,
-                right: '12%',
-                backgroundColor: '#FF5C5C',
-                paddingVertical: 2,
-                paddingHorizontal: 6,
-                borderRadius: 6,
-              }}>
-                <Text style={{ color: '#FFF', fontSize: 9, fontWeight: 'bold' }}>25% OFF</Text>
-              </View>
-
-              <Text style={{
-                color: activeTab === 'virtual' ? '#FFF' : '#888',
-                fontSize: 16,
-                fontWeight: activeTab === 'virtual' ? '700' : '500'
-              }}>
-                Virtual Card
-              </Text>
-
-
-              {activeTab === 'virtual' && (
-                <View style={{ position: 'absolute', bottom: 0, width: 40, height: 3, backgroundColor: '#FFF', borderRadius: 2 }} />
-              )}
-            </TouchableOpacity>
-
-            {/* physical card */}
-            <TouchableOpacity
-              onPress={() => setActiveTab('physical')}
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%', position: 'relative' }}>
-              <Text style={{
-                color: activeTab === 'physical' ? '#FFF' : '#888',
-                fontSize: 16,
-                fontWeight: activeTab === 'physical' ? '700' : '500'
-              }}>
-                Physical Card
-              </Text>
-
-              {/* Active Bottom Indicator Underline */}
-              {activeTab === 'physical' && (
-                <View style={{ position: 'absolute', bottom: 0, width: 40, height: 3, backgroundColor: '#FFF', borderRadius: 2 }} />
-              )}
-            </TouchableOpacity>
-
-          </View>
-
-          {activeTab === 'virtual' ? (
-            <View style={{flex:1, gap:30, padding:10 }}>
-
-              <View style={{ width: '100%', height: 200,  }}>
-                <Image style={{ height: '100%', width: '100%', borderRadius: 20 }} source={require('../assets/atm.png')} />
-              </View>
-
-
-              <View style={{  backgroundColor: '#111214', justifyContent: 'center', }}>
-
-                {/* CARD MAIN WRAPPER CONTAINER */}
                 <View style={{
-                  backgroundColor: '#262626',
-                  borderRadius: 20,
-                  paddingTop: 32,
-                  paddingHorizontal: 16,
-                  paddingBottom: 8
+                  position: 'absolute',
+                  top: -2,
+                  right: '12%',
+                  backgroundColor: '#FF5C5C',
+                  paddingVertical: 2,
+                  paddingHorizontal: 6,
+                  borderRadius: 6,
                 }}>
-
-                  {/* FLOATING HEADER BADGE */}
-                  <View style={{
-                    position: 'absolute',
-                    top: -10,
-                    alignSelf: 'center',
-                    backgroundColor: '#11382B',
-                    paddingVertical: 6,
-                    paddingHorizontal: 16,
-                    borderRadius: 20,
-                    borderWidth: 1,
-                    borderColor: '#1C4A3A'
-                  }}>
-                    <Text style={{ color: '#00B986', fontSize: 13, fontWeight: 'bold' }}>
-                      OPay Verve Classic
-                    </Text>
-                  </View>
-
-                  {/* THE FLATLIST */}
-                  <FlatList
-                    data={benefitsData}
-                    renderItem={renderBenefitItem}
-                    keyExtractor={(item) => item.id}
-                    scrollEnabled={false} // List fits neatly inside the static card wrapper
-                  />
-
+                  <Text style={{ color: '#FFF', fontSize: 9, fontWeight: 'bold' }}>25% OFF</Text>
                 </View>
-              </View>
-              
-              <TouchableOpacity style={{ paddingVertical: 10, paddingHorizontal: 100, backgroundColor: '#00B986', alignSelf:'center', justifyContent:'center', borderRadius:20}}>
-                <Text style={{fontWeight:'800', fontSize:16}}>Get It Now</Text>
+
+                <Text style={{
+                  color: activeTab === 'virtual' ? '#FFF' : '#888',
+                  fontSize: 16,
+                  fontWeight: activeTab === 'virtual' ? '700' : '500'
+                }}>
+                  Virtual Card
+                </Text>
+
+
+                {activeTab === 'virtual' && (
+                  <View style={{ position: 'absolute', bottom: 0, width: 40, height: 3, backgroundColor: '#FFF', borderRadius: 2 }} />
+                )}
+              </TouchableOpacity>
+
+              {/* physical card */}
+              <TouchableOpacity
+                onPress={() => setActiveTab('physical')}
+                style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%', position: 'relative' }}>
+                <Text style={{
+                  color: activeTab === 'physical' ? '#FFF' : '#888',
+                  fontSize: 16,
+                  fontWeight: activeTab === 'physical' ? '700' : '500'
+                }}>
+                  Physical Card
+                </Text>
+
+                {/* Active Bottom Indicator Underline */}
+                {activeTab === 'physical' && (
+                  <View style={{ position: 'absolute', bottom: 0, width: 40, height: 3, backgroundColor: '#FFF', borderRadius: 2 }} />
+                )}
+              </TouchableOpacity>
+
+            </View>
+
+            {activeTab === 'virtual' ? (
+              <View style={{ flex: 1, gap: 30, padding: 10 }}>
+
+                <View style={{ width: '100%', height: 200, }}>
+                  <Image style={{ height: '100%', width: '100%', borderRadius: 20 }} source={require('../assets/atm.png')} />
+                </View>
+
+
+                <View style={{ backgroundColor: '#111214', justifyContent: 'center', }}>
+
+                  {/* CARD MAIN WRAPPER CONTAINER */}
+                  <View style={{
+                    backgroundColor: '#262626',
+                    borderRadius: 20,
+                    paddingTop: 32,
+                    paddingHorizontal: 16,
+                    paddingBottom: 8
+                  }}>
+
+                    {/* FLOATING HEADER BADGE */}
+                    <View style={{
+                      position: 'absolute',
+                      top: -10,
+                      alignSelf: 'center',
+                      backgroundColor: '#11382B',
+                      paddingVertical: 6,
+                      paddingHorizontal: 16,
+                      borderRadius: 20,
+                      borderWidth: 1,
+                      borderColor: '#1C4A3A'
+                    }}>
+                      <Text style={{ color: '#00B986', fontSize: 13, fontWeight: 'bold' }}>
+                        OPay Verve Classic
+                      </Text>
+                    </View>
+
+                    {/* THE FLATLIST */}
+                    <FlatList
+                      data={benefitsData}
+                      renderItem={renderBenefitItem}
+                      keyExtractor={(item) => item.id}
+                      scrollEnabled={false}
+                      
+                    />
+
+                  </View>
+                </View>
+
+                <TouchableOpacity style={{ paddingVertical: 10, paddingHorizontal: 100, backgroundColor: '#00B986', alignSelf: 'center', justifyContent: 'center', borderRadius: 20 }}>
+                  <Text style={{ fontWeight: '800', fontSize: 16 }}>Get It Now</Text>
                 </TouchableOpacity>
 
 
@@ -233,17 +226,19 @@ export default function Cards() {
 
 
 
-            </View>
-          ) : (
+              </View>
+            ) : (
 
-            <View style={{ width: '100%', height: 200, backgroundColor: '#11382B', borderRadius: 16, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>🏪 Physical Card UI View</Text>
-            </View>
-          )}
+              <View style={{ width: '100%', height: 200, backgroundColor: '#11382B', borderRadius: 16, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>🏪 Physical Card UI View</Text>
+              </View>
+            )}
 
-        </View>
+          </View>
 
 
+        </ScrollView>
+        
 
       </SafeAreaView>
     </SafeAreaProvider>
