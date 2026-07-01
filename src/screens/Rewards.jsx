@@ -9,7 +9,6 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 
 export default function Rewards() {
-
   const [isModalOn, setIsModalOn] = useState(false);
 
   const Rewards = [
@@ -32,11 +31,49 @@ export default function Rewards() {
       desc: "Buy Airtime and get up to 3.5% Cashback",
     },
   ];
-
+  const Data = [
+    {
+      id: '1',
+      title: "Glo Airtime",
+      cashback: "Up to 6%",
+      desc: "Buy Airtime and get up to 6% Cashback",
+    },
+    {
+      id: '2',
+      title: "9 Mobile Airtime",
+      cashback: "Up to 5%",
+      desc: "Buy Airtime and get up to 5% CAshback",
+    },
+    {
+      id: '3',
+      title: "MTN/Airtel Airtime",
+      cashback: "Up to 3.5%",
+      desc: "Buy Airtime and get up to 3.5% Cashback",
+    },
+    {
+      id: '4',
+      title: "MTN/Airtel Airtime",
+      cashback: "Up to 3.5%",
+      desc: "Buy Airtime and get up to 3.5% Cashback",
+    },
+    {
+      id: '5',
+      title: "MTN/Airtel Airtime",
+      cashback: "Up to 3.5%",
+      desc: "Buy Airtime and get up to 3.5% Cashback",
+    },
+    {
+      id: '6',
+      title: "MTN/Airtel Airtime",
+      cashback: "Up to 3.5%",
+      desc: "Buy Airtime and get up to 3.5% Cashback",
+    },
+  ];
   const rewards = ({ item }) => (
     <View style={{ marginTop: 8, }}>
       <View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10, }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10,}}>
+          <Image source={require('../assets/but.jpg')} style={{ width: 20, height: 20 }} />
           <Text>{item.title}</Text>
           <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
           <Text>{item.cashback}</Text>
@@ -46,7 +83,7 @@ export default function Rewards() {
           <View>
           </View>
 
-          <TouchableOpacity style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 15 }}>
+          <TouchableOpacity style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 15, transform: [{ translateY: -19 }] }}>
             <Text>Go</Text>
           </TouchableOpacity>
         </View>
@@ -56,6 +93,31 @@ export default function Rewards() {
       </View>
     </View>
   )
+  const data = ({ item }) => (
+    <View style={{ paddingVertical: 8 }}>
+      <View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10, }}>
+          <Image source={require('../assets/but.jpg')} style={{ width: 20, height: 20 }} />
+          <Text>{item.title}</Text>
+          <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
+          <Text>{item.cashback}</Text>
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", gap: 10, }}>
+          <Text>{item.desc}</Text>
+
+
+          <TouchableOpacity style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 15, transform: [{ translateY: -19 }] }}>
+            <Text>Go</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+        </View>
+      </View>
+    </View>
+  )
+
+
 
   return (
     <SafeAreaProvider>
@@ -83,7 +145,6 @@ export default function Rewards() {
                 Voucher
               </Text>
             </View>
-
           </View>
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, justifyContent: 'space-between', marginTop: 20 }}>
@@ -154,7 +215,7 @@ export default function Rewards() {
 
 
         <View style={{ backgroundColor: 'gray', height: '30%', width: '100%', borderRadius: 15, padding: 20, }}>
-          <View style={{flexWrap:'wrap'}}>
+          <View style={{ flexWrap: 'wrap' }}>
 
             <FlatList
               data={Rewards}
@@ -163,7 +224,7 @@ export default function Rewards() {
               scrollEnabled={false}
             />
           </ View>
-          <TouchableOpacity onPress={()=> setIsModalOn(true)} style={{ flexDirection: 'row', alignSelf:'center', alignItems:'center' }}>
+          <TouchableOpacity onPress={() => setIsModalOn(true)} style={{ flexDirection: 'row', alignSelf: 'center', alignItems: 'center' }}>
             <Text style={{ color: 'white' }}>View All</Text>
             <Entypo name="chevron-down" size={20} color="#f6f6f6" />
           </TouchableOpacity>
@@ -172,39 +233,45 @@ export default function Rewards() {
 
 
         <View style={styles.banner}>
-          <Text style={styles.bannerTittle}>
-            Claim 15 Discounts with
-          </Text>
-
-          <Text style={styles.bannerPrice}>
-            #99 on any Bill
-          </Text>
-
-          <TouchableOpacity style={styles.claimButton}>
-            <Text style={styles.claimText}>
-              Claim 15 Discounts
+          <View style={{ justifyContent: "center" }}>
+            <Text style={styles.bannerTittle}>
+              Claim 15 Discounts with
             </Text>
-          </TouchableOpacity>
+
+            <Text style={styles.bannerPrice}>
+              #99 on any Bill
+            </Text>
+            <TouchableOpacity style={styles.claimButton}>
+              <Text style={styles.claimText}>
+                Claim 15 Discounts
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ alignItems: "center", justifyContent: "center", paddingRight: 40, }}>
+            <Image source={require('../assets/but.jpg')} style={{ height: 100, width: 100 }} />
+          </View>
         </View>
 
-        <View style={styles.bannerImage} />
 
 
-        <Modal 
-        visible={isModalOn}
-        transparent={true}
+        <Modal
+          visible={isModalOn}
+          transparent={true}
         >
-          <View style={{padding:30, flex:0.6, backgroundColor:'plum', marginTop:'auto' }}>
-            <TouchableOpacity onPress={()=> setIsModalOn(false)} style={{paddingHorizontal:30, paddingVertical:15, backgroundColor:'red'}}>
-              <Text>Close</Text>
-            </TouchableOpacity>
+          <View style={{ padding: 30, flex: 0.6, backgroundColor: 'gray', marginTop: 'auto' }}>
+            <TouchableOpacity onPress={() => setIsModalOn(false)} style={{ paddingHorizontal: 10, paddingVertical: 15, }}>
+              <Text style={{ fontSize: 20, fontWeight: "light" }} >Close</Text>
 
+            </TouchableOpacity>
+            <FlatList
+              data={Data}
+              renderItem={data}
+              keyExtractor={(item) => item.id}
+              scrollEnabled={false}
+            />
           </View>
 
-
         </Modal>
-
-
 
       </SafeAreaView>
     </SafeAreaProvider>
@@ -228,11 +295,16 @@ const styles = StyleSheet.create({
   },
 
   banner: {
+    height: 150,
+    width: "100%",
     marginTop: 15,
     backgroundColor: "#d8fff4",
     borderRadius: 18,
     justifyContent: "space-between",
-    alignItems: "center",
+
+    paddingLeft: 20,
+    flexDirection: "row"
+
   },
   bannerTittle: {
     fontSize: 18,
@@ -242,13 +314,17 @@ const styles = StyleSheet.create({
     color: "#00b386",
     fontSize: 28,
     fontWeight: "bold",
-
+    marginTop: 8
   },
   claimButton: {
-    color: "#080808",
-    fontWeight: "bold",
-
-
+    borderRadius: 10,
+    width: "70%",
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#09e67f",
+    borderRadius: 25,
+    marginTop: 8
   },
   bannerImage: {
     width: 100,
