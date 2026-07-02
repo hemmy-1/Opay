@@ -70,27 +70,23 @@ export default function Rewards() {
     },
   ];
   const rewards = ({ item }) => (
-    <View style={{ marginTop: 8, }}>
+    <View style={{ marginTop: 8, flexDirection:'row', alignItems:'center', gap:10, justifyContent:'space-between'
+    }}>
+      <Image source={require('../assets/but.jpg')} style={{ width: 20, height: 20 }} />
       <View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10,}}>
-          <Image source={require('../assets/but.jpg')} style={{ width: 20, height: 20 }} />
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifycontent: 'center', gap: 10, }}>
           <Text>{item.title}</Text>
           <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
           <Text>{item.cashback}</Text>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", gap: 10, }}>
-          <Text>{item.desc}</Text>
-          <View>
-          </View>
+        <Text>{item.desc}</Text>
 
-          <TouchableOpacity style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 15, transform: [{ translateY: -19 }] }}>
+      </View>
+      <TouchableOpacity style={{ height: 30, width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: '#0f7d55', borderRadius: 15,  }}>
             <Text>Go</Text>
           </TouchableOpacity>
-        </View>
 
-        <View>
-        </View>
-      </View>
     </View>
   )
   const data = ({ item }) => (
@@ -224,9 +220,9 @@ export default function Rewards() {
               scrollEnabled={false}
             />
           </ View>
-          <TouchableOpacity onPress={() => setIsModalOn(true)} style={{ flexDirection: 'row', alignSelf: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => setIsModalOn(true)} style={{ flexDirection: 'row', alignSelf: 'center', alignItems: 'center', marginTop:20 }}>
             <Text style={{ color: 'white' }}>View All</Text>
-            <Entypo name="chevron-down" size={20} color="#f6f6f6" />
+            <Entypo name="chevron-down" size={20} color='#393535' />
           </TouchableOpacity>
         </View>
 
@@ -258,7 +254,7 @@ export default function Rewards() {
           visible={isModalOn}
           transparent={true}
         >
-          <View style={{ padding: 30, flex: 0.6, backgroundColor: 'gray', marginTop: 'auto' }}>
+          <View style={{ padding: 30, flex: 0.6, backgroundColor: "#393535", marginTop: 'auto' }}>
             <TouchableOpacity onPress={() => setIsModalOn(false)} style={{ paddingHorizontal: 10, paddingVertical: 15, }}>
               <Text style={{ fontSize: 20, fontWeight: "light" }} >Close</Text>
 
