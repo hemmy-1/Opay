@@ -22,7 +22,7 @@ export default function Rewards() {
     },
     {
       id: 3,
-      image: require('../assets/icons8-star-100.png'),
+      image: require('../assets/star.png'),
       title: 'Play4achild'
     },
     {

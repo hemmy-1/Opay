@@ -131,7 +131,6 @@ export default function Home() {
             <SafeAreaView style={styles.container1}>
                 <StatusBar barStyle="light-content" />
 
-                {/* TOP PROFILE HEADER ACCENTS BAR */}
                 <View style={{
                     flexDirection: 'row',
                     backgroundColor: '#25292e00',

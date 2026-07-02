@@ -5,6 +5,7 @@ import Rewards from '../screens/Rewards';
 import Home from '../screens/Home';
 import Finance from '../screens/Finance';
 import Cards from '../screens/Cards';
+import Me from '../screens/Me';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ export default function TabNavigation() {
             <Tab.Screen name="Rewards" component={Rewards} />
             <Tab.Screen name="Finance" component={Finance} />
             <Tab.Screen name="Cards" component={Cards} />
+            <Tab.Screen name="Me" component={Me} />
 
         </Tab.Navigator>
     )

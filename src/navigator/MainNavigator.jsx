@@ -18,6 +18,7 @@ import VerifyKYC from '../screens/VerifyKYC'
 import Withdraw from '../screens/Withdraw'
 import ToBank from '../screens/ToBank'
 import ToOpay from '../screens/ToOpay'
+import TransferToBank from '../screens/TransferToBank'
 
 
 
@@ -51,6 +52,7 @@ const MainNavigator = () => {
           <Stack.Screen name='Withdraw' component={Withdraw} />
           <Stack.Screen name='ToBank' component={ToBank} />
           <Stack.Screen name='ToOpay' component={ToOpay} />
+          <Stack.Screen name='TTbank' component={TransferToBank} />
         </>
       )}
     </Stack.Navigator>

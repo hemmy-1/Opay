@@ -106,63 +106,66 @@ export default function Finance() {
                       </View>
                     </TouchableOpacity>
 
-                    <View style={{ width: 410, borderWidth: 0.5, borderStyle: 'dashed', borderColor: 'white', marginBottom: 10, marginVertical: 10 }} />
+                    <View style={{ width: '100%', borderWidth: 0.5, borderStyle: 'dashed', borderColor: 'white', marginBottom: 10, marginVertical: 10, height: 4 }} />
+                    
+                    <View>
 
-                    <Text style={{ color: '#888' }}>Savings</Text>
+                      <Text style={{ color: '#888' }}>Savings</Text>
 
-                    <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
-                      <View style={{ height: 20, width: 110, }}>
-                        <Text style={{ color: 'white' }}>Terget</Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 0.00</Text>
-                        <Entypo name="chevron-right" size={16} color="#00b98498" />
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
-                      <View style={{ height: 20, width: 110, }}>
-                        <Text style={{ color: 'white' }}>
-                          SafeBox
-                        </Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 2,121.92</Text>
-                        <Entypo name="chevron-right" size={16} color="#00b98498" />
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
-                      <View style={{ height: 20, width: 110, }}>
-                        <Text style={{ color: 'white' }}>
-                          Fixed</Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 0.00</Text>
-                        <Entypo name="chevron-right" size={16} color="#00b98498" />
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
-                      <View style={{ height: 20, width: 110, }}>
-                        <Text style={{ color: 'white' }}>
-                          Spend & Save</Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 15,760.77</Text>
-                        <View style={{ flexDirection: 'row', gap: 5 }}>
-                          <Text style={{ color: 'white', fontWeight: 'bold' }}>+₦ 0.11</Text>
+                      <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
+                        <View style={{ height: 20, width: 110, }}>
+                          <Text style={{ color: 'white' }}>Terget</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+                          <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 0.00</Text>
                           <Entypo name="chevron-right" size={16} color="#00b98498" />
                         </View>
-                      </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => setIsAsset(true)}>
-                      <Ionicons name="chevron-up" size={16} color="#00b98498" style={{ alignSelf: 'center' }} />
-                    </TouchableOpacity>
+
+                      <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
+                        <View style={{ height: 20, width: 110, }}>
+                          <Text style={{ color: 'white' }}>
+                            SafeBox
+                          </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+                          <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 2,121.92</Text>
+                          <Entypo name="chevron-right" size={16} color="#00b98498" />
+                        </View>
+                      </TouchableOpacity>
+
+
+                      <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
+                        <View style={{ height: 20, width: 110, }}>
+                          <Text style={{ color: 'white' }}>
+                            Fixed</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+                          <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 0.00</Text>
+                          <Entypo name="chevron-right" size={16} color="#00b98498" />
+                        </View>
+                      </TouchableOpacity>
+
+
+                      <TouchableOpacity activeOpacity={0.5} style={{ flexDirection: 'row', width: '100%', }}>
+                        <View style={{ height: 20, width: 110, }}>
+                          <Text style={{ color: 'white' }}>
+                            Spend & Save</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+                          <Text style={{ color: 'white', fontWeight: 'bold' }}>₦ 15,760.77</Text>
+                          <View style={{ flexDirection: 'row', gap: 5 }}>
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>+₦ 0.11</Text>
+                            <Entypo name="chevron-right" size={16} color="#00b98498" />
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+
+                      <TouchableOpacity onPress={() => setIsAsset(true)}>
+                        <Ionicons name="chevron-up" size={16} color="#00b98498" style={{ alignSelf: 'center' }} />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 )}
 
@@ -171,7 +174,7 @@ export default function Finance() {
           </View>
 
 
-          <View style={{ height: '100%', backgroundColor: '#2c2b2b', borderTopRightRadius: 20, borderTopLeftRadius: 20, marginTop: 10, padding: 10, paddingTop: 30, width: '100%', gap:20 }}>
+          <View style={{ height: '100%', backgroundColor: '#2c2b2b', borderTopRightRadius: 20, borderTopLeftRadius: 20, marginTop: 10, padding: 10, paddingTop: 30, width: '100%', gap: 20 }}>
 
             <View style={{ flexDirection: 'row', alignSelf: 'center', gap: 35 }}>
 
@@ -210,9 +213,9 @@ export default function Finance() {
                 <Text style={{ color: 'white', fontSize: 12 }}>Spend & Save</Text>
               </TouchableOpacity>
             </View>
-            <View style={{ flexDirection: 'row' , alignSelf:'center', alignItems:'center', }}>
+            <View style={{ flexDirection: 'row', alignSelf: 'center', alignItems: 'center', }}>
               <MaterialCommunityIcons name="guitar-pick" size={16} color="#00B986" />
-              <Text style={{color:'white', fontSize:12}}>
+              <Text style={{ color: 'white', fontSize: 12 }}>
                 OWealth and Savings are powered by Opay MicroFinance Ltd.
               </Text>
             </View>

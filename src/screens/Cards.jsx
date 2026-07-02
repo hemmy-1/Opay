@@ -3,6 +3,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Feather from '@expo/vector-icons/Feather';
 import { useState } from 'react';
 import Entypo from '@expo/vector-icons/Entypo';
+import images from '../Constant/images';
 
 
 export default function Cards() {
@@ -230,7 +231,7 @@ export default function Cards() {
 
             <View style={{ flex: 1, gap: 20, padding: 10 }}>
               <View style={{ width: '100%', height: 200, }}>
-                <Image style={{ height: '100%', width: '100%', borderRadius: 20 }} source={require('../assets/opaycard.png')} />
+                  <Image style={{ height: '100%', width: '100%', borderRadius: 20 }} source={images.opaycard} />
               </View>
 
               <View style={{
@@ -246,40 +247,40 @@ export default function Cards() {
               <View style={{
                 backgroundColor: '#393535', borderRadius: 18, padding: 10, paddingHorizontal: 20,  flexWrap:'wrap', flexDirection:'row', width:'100%' }}>
 
-                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height:80, width:120 }}>
-                    <View style={{height:40, width:40, backgroundColor:'black', borderRadius:30, justifyContent:'center', alignItems:'center'}}>
+                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120, justifyContent: 'center' }}>
+                    <View style={{height:40, width:40, borderRadius:30, justifyContent:'center', alignItems:'center'}}>
                       <Image style={{ height:27, width:27}} source={require('../assets/card1.png')}/>
 
                     </View>
                     <Text style={{ color: '#bbb9b9', fontSize: 11, }}>Details</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120}}>
-                    <View style={{height:40, width:40, backgroundColor:'black', borderRadius:30, justifyContent:'center', alignItems:'center'}}>
+                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120, justifyContent: 'center' }}>
+                    <View style={{height:40, width:40, borderRadius:30, justifyContent:'center', alignItems:'center'}}>
                       <Image style={{ height:27, width:27}} source={require('../assets/card2.png')}/>
 
                     </View>
                     <Text style={{ color: '#bbb9b9', fontSize: 11, }}>Card Settings</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120}}>
-                    <View style={{height:40, width:40, backgroundColor:'black', borderRadius:30, justifyContent:'center', alignItems:'center'}}>
+                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120, justifyContent: 'center' }}>
+                    <View style={{height:40, width:40, borderRadius:30, justifyContent:'center', alignItems:'center'}}>
                       <Image style={{ height:27, width:27}} source={require('../assets/caution.png')}/>
 
                     </View>
                     <Text style={{ color: '#bbb9b9', fontSize: 11, }}>Mange Dispute</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120}}>
-                    <View style={{height:40, width:40, backgroundColor:'black', borderRadius:30, justifyContent:'center', alignItems:'center'}}>
+                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 110, justifyContent: 'center' }}>
+                    <View style={{height:40, width:40,  borderRadius:30, justifyContent:'center', alignItems:'center'}}>
                       <Image style={{ height:27, width:27}} source={require('../assets/shop.png')}/>
 
                     </View>
-                    <Text style={{ color: '#bbb9b9', fontSize:11, }}>Mange Online Merchant</Text>
+                    <Text style={{ color: '#bbb9b9', fontSize:10, }}>Mange Online Merchant</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 120 }}>
-                    <View style={{height:40, width:40, backgroundColor:'black', borderRadius:30, justifyContent:'center', alignItems:'center'}}>
+                  <TouchableOpacity activeOpacity={0.5} style={{ gap: 5, alignItems: 'center', height: 80, width: 110, justifyContent:'center' }}>
+                    <View style={{height:40, width:40, borderRadius:30, justifyContent:'center', alignItems:'center'}}>
                       <Image style={{ height:27, width:27}} source={require('../assets/note.png')}/>
 
                     </View>

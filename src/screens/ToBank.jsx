@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, ScrollView, ImageBackground, Text, TouchableOpacity, Dimensions, Image, TextInput } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
 import Entypo from '@expo/vector-icons/Entypo';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -200,8 +200,8 @@ export default function ToBank() {
                         <View style={{ width: '100%', borderWidth: 1, borderColor: '#202020' }} />
                     </View>
 
-                    <TouchableOpacity activeOpacity={0.5} style={{ height: 50, width: '95%', alignSelf: 'center', backgroundColor: '#024e21', marginTop: '15', borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text >Next</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('TTbank')} activeOpacity={0.5} style={{ height: 50, width: '95%', alignSelf: 'center', backgroundColor: '#024e21', marginTop: '15', borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text>Next</Text>
 
                     </TouchableOpacity>
                 </View>

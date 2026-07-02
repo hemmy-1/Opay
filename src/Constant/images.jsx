@@ -1,31 +1,37 @@
-import IntroSlider1 from "./../assets/images/Onboarding 1.jpg";
-import IntroSlider2 from "./../assets/images/Onboarding 2.jpg";
-import IntroSlider3 from "./../assets/images/Onboarding 3.jpg";
-import logo from "../assets/icons/logo.png";
-import LogoIc from "../assets/images/image.jpg";
-import property from "../assets/images/property.jpg";
-import propertyGrid from "../assets/images/PropertyGrid.jpg";
-import propertyHero from "../assets/images/property-hero.jpg";
-import invest1 from "../assets/images/house1.png";
-import invest2 from "../assets/images/farmImg.png";
-import complex from "../assets/images/complex.png";
-import shop from "../assets/images/shop.png";
-import hostel from "../assets/images/hostel.png";
+
+import aMoney from "../assets/aMoney.png";
+import opaycard from "../assets/opaycard.png";
+import logoooo from "../assets/logoooo.png";
+import shield2 from "../assets/shield2.png";
+import shield from "../assets/shield.png";
+import note from "../assets/note.png";
+import card2 from "../assets/card2.png";
+import speed from "../assets/speed.png";
+import celebration from "../assets/celebration.png";
+import ccare from "../assets/ccare.png";
+import card3 from "../assets/card3.png";
+import transactionh from "../assets/transactionh.png";
+import shop1 from "../assets/shop1.png";
+import people from "../assets/people.png";
+import star from "../assets/star1.png";
 
 const images = {
-  logo,
-  LogoIc,
-  property,
-  propertyHero,
-  propertyGrid,
-  IntroSlider1,
-  IntroSlider2,
-  IntroSlider3,
-  invest1,
-  invest2,
-  hostel,
-  shop,
-  complex,
+  aMoney,
+  opaycard,
+  logoooo,
+  shield2,
+  note,
+  card2,
+  speed,
+  celebration,
+  ccare,
+  card3,
+  transactionh,
+  shop1,
+  people,
+  star,
+  shield
+  
 };
 
 export default images;
