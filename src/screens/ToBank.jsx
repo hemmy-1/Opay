@@ -200,7 +200,7 @@ export default function ToBank() {
                         <View style={{ width: '100%', borderWidth: 1, borderColor: '#202020' }} />
                     </View>
 
-                    <TouchableOpacity onPress={()=> navigation.navigate('TTbank')} activeOpacity={0.5} style={{ height: 50, width: '95%', alignSelf: 'center', backgroundColor: '#024e21', marginTop: '15', borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity  onPress={() => navigation.navigate("TransferToBank")} activeOpacity={0.5} style={{ height: 50, width: '95%', alignSelf: 'center', backgroundColor: '#024e21', marginTop: '15', borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
                         <Text>Next</Text>
 
                     </TouchableOpacity>

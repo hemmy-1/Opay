@@ -222,14 +222,14 @@ export default function Me() {
 
         </View>
       </SafeAreaView>
-       <View style={{ backgroundColor: '#000' }}> 
+       <View style={{flex:1,  }}> 
 
         <ScrollView>
 
           <View style={{
             gap: 50, backgroundColor: '#393535', borderRadius: 18, padding: 10,
             alignItems: 'center', justifyContent: 'center',
-            marginHorizontal: 10, flexDirection: 'row', marginTop:80
+            marginHorizontal: 10, flexDirection: 'row', marginTop:40
           }}>
 
             <FlatList

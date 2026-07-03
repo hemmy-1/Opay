@@ -1,15 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 
-export default function TransferToBank() {
-  return (
-    <View>
-      <Text>TransferToBank</Text>
-    </View>
-  )
-}
-
-const styles = StyleSheet.create({})
 import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -39,7 +28,7 @@ const TransferToBank = () => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text style={{ color: "#fff", fontSize: 25 }}>←</Text>
           </TouchableOpacity>
-          <Text style={{ Color: "#fff", fontSize: 20, }}>Transfer to OPay Account</Text>
+          <Text style={{ color:'white', fontSize: 20, }}>Transfer to OPay Account</Text>
 
         </View>
         <TouchableOpacity>
