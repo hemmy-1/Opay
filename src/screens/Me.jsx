@@ -96,14 +96,13 @@ export default function Me() {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          paddingVertical: 16,
-          borderBottomColor: '#333333',
+          paddingVertical: 10,
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
           <Image
             source={item.imageSource}
-            style={{ width: 26, height: 26, marginRight: 16 }}
+            style={{ width: 25, height: 25, marginRight: 16 }}
             resizeMode="contain"
           />
           <View style={{ justifyContent: 'center' }}>
@@ -180,19 +179,10 @@ export default function Me() {
 
         </View>
 
-        <View style={{
-          flexDirection: 'row',
-          backgroundColor: '#04b775',
-          borderRadius: 24,
-          paddingVertical: 14,
-          paddingHorizontal: 16,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          width: '100%',
-          position:'relative',
-          zIndex:2,
-          bottom:-20,
-          alignSelf:'center'
+        <View style={{flexDirection: 'row', backgroundColor: '#04b775', borderRadius: 24,paddingVertical: 8, paddingHorizontal: 16, justifyContent: 'space-between',alignItems: 'center',width: '100%',
+        position:'absolute',
+        zIndex:2,bottom:-30,
+        alignSelf:'center'
         }}>
 
           <View style={{ flexDirection: 'row', paddingRight: 12 }}>
@@ -204,30 +194,17 @@ export default function Me() {
             />
 
             <View style={{ }}>
-              <Text style={{
-                color: '#043927', // Deep forest green/black text for readability
-                fontWeight: '700',
-                fontSize: 16,
-                letterSpacing: -0.3
-              }}>
-                Security Check is ON
+              <Text style={{color: '#043927', fontWeight: '700',fontSize: 16,letterSpacing: -0.3}}>Security Check is ON
               </Text>
 
-              <Text style={{
-                color: '#055339', // Subdued dark green for secondary text
-                fontSize: 13,
-                marginTop: 4,
-                fontWeight: '400',
-                lineHeight: 16
-              }}>
+              <Text style={{color: '#055339', fontSize: 13,marginTop: 4,fontWeight: '400',lineHeight: 16}}>
                 Do safety check again to ensure your account's security.
               </Text>
             </View>
           </View>
 
-          {/* Right Side: Dark Capsule "Review" Button */}
           <TouchableOpacity style={{
-            backgroundColor: '#222222EE', // Translucent/dark background tint matching the image
+            backgroundColor: '#222222EE', 
             paddingVertical: 8,
             paddingHorizontal: 20,
             borderRadius: 20,
@@ -235,7 +212,7 @@ export default function Me() {
             alignItems: 'center'
           }}>
             <Text style={{
-              color: '#00D285', // Button text matches the main banner green
+              color: '#00D285', 
               fontWeight: '700',
               fontSize: 14
             }}>
@@ -245,14 +222,14 @@ export default function Me() {
 
         </View>
       </SafeAreaView>
-      <View style={{ backgroundColor: '#000', zIndex: 1, }}>
+       <View style={{ backgroundColor: '#000' }}> 
 
         <ScrollView>
 
           <View style={{
             gap: 50, backgroundColor: '#393535', borderRadius: 18, padding: 10,
             alignItems: 'center', justifyContent: 'center',
-            marginHorizontal: 10, flexDirection: 'row', marginTop: 10
+            marginHorizontal: 10, flexDirection: 'row', marginTop:80
           }}>
 
             <FlatList
@@ -260,7 +237,6 @@ export default function Me() {
               keyExtractor={(item) => item.id}
               renderItem={renderMenuItem}
               scrollEnabled={false}
-            // contentContainerStyle={{ padding: 16 }}
 
             />
           </View>
@@ -277,12 +253,11 @@ export default function Me() {
               keyExtractor={(item) => item.id}
               renderItem={renderMenuItem}
               scrollEnabled={false}
-            // contentContainerStyle={{ padding: 16 }}
 
             />
           </View>
         </ScrollView>
-      </View>
+      </View> 
 
     </SafeAreaProvider>
   )
