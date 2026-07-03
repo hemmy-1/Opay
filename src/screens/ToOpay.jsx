@@ -310,9 +310,9 @@ export default function ToBank() {
                             paddingBottom: 15,
                             marginHorizontal: 15,
                             marginVertical: 10,
-                        }}
-                    >
-                        \                        <View
+                        }}>
+                            
+                        <View
                             style={{
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
