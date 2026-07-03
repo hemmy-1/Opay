@@ -147,12 +147,12 @@ export default function Rewards() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, justifycontent: 'center' }}>
               <MaterialCommunityIcons name="bitcoin" size={24} color="black" />
               <Text style={{ frontsize: 16, color: 'white' }}>
-                # 436.90
+                ₦ 436.90
               </Text>
             </View>
             <View>
               <Text style={{ fontsize: 16, color: 'white' }}>
-                #0
+                ₦0
               </Text>
 
             </View>
