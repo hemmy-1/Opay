@@ -32,7 +32,7 @@ export default function Finance() {
             <View style={{
               backgroundColor: '#11382B', width: '100%', borderRadius: 20, marginTop: 10, flexDirection: 'column', flexWrap: 'wrap'
             }}>
-              <View style={{
+              <TouchableOpacity style={{
                 width: '100%',
                 backgroundColor: '#00B986',
                 borderRadius: 18,
@@ -69,7 +69,7 @@ export default function Finance() {
                   <Text style={{ fontSize: 11 }}>
                     {"Estimate intrest ₦184/month, Beats 84% others  >"}              </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
 
               {isAsset ?
                 (<TouchableOpacity onPress={() => setIsAsset(!isAsset)} style={{ flexDirection: 'row', padding: 10, alignSelf: 'center' }}>

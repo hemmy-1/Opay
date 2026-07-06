@@ -10,7 +10,7 @@ import speed from "../assets/speed.png";
 import celebration from "../assets/celebration.png";
 import ccare from "../assets/ccare.png";
 import card3 from "../assets/card3.png";
-import transactionh from "../assets/transactionh.png";
+import transaction from "../assets/transaction.png";
 import shop1 from "../assets/shop1.png";
 import people from "../assets/people.png";
 import star from "../assets/star1.png";
@@ -26,12 +26,12 @@ const images = {
   celebration,
   ccare,
   card3,
-  transactionh,
+  transaction,
   shop1,
   people,
   star,
   shield
-  
+
 };
 
 export default images;
