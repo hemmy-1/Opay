@@ -7,14 +7,15 @@ import { useState } from 'react';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useNavigation } from '@react-navigation/native';
+import jsxRuntime from 'react/jsx-runtime';
 
 
 
 
 
 export default function Me() {
-  const navigation = useNavigation()
-  const logoImage = images.logoooo
+  const navigation = useNavigation();
+  const logoImage = images.logoooo;
 
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
 
@@ -39,6 +40,7 @@ export default function Me() {
       title: 'Bank Card/Account',
       subtitle: '3 linked cards/accounts',
       imageSource: images.card3,
+      screen: 'BankC'
     },
     {
       id: '4',

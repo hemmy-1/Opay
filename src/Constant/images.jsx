@@ -14,6 +14,7 @@ import transaction from "../assets/transaction.png";
 import shop1 from "../assets/shop1.png";
 import people from "../assets/people.png";
 import star from "../assets/star1.png";
+import wema from "../assets/Wema.png";
 
 const images = {
   aMoney,
@@ -30,7 +31,8 @@ const images = {
   shop1,
   people,
   star,
-  shield
+  shield,
+  wema,
 
 };
 
