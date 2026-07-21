@@ -22,9 +22,31 @@ const BANNERS = [
     { id: '2', title: 'Send Money For Free Instantly', subtitle: 'Zero charges to any bank account in Nigeria.', buttonText: 'Transfer Now', tag: 'PROMO 2026' },
 ];
 
-export default function ToBank() {
+export default function ToOpay() {
     const navigation = useNavigation();
     const [activeIndex, setActiveIndex] = useState(0);
+    const [accountNum, setAccountNum] = useState();
+    const [accountName, setAccountName] = useState();
+
+    const isFormValid = () => {
+
+        const isNameValid = String(accountName || '').trim().length > 0;
+
+        // 2. Safely check 10-digit account length
+        const isAccountNumValid = String(accountNum || '').trim().length === 10;
+
+        return isNameValid && isAccountNumValid;
+    };
+
+    const handleNext = () => {
+        if (!isFormValid()) return;
+
+        navigation.navigate('TransferToBank', {
+            accName: accountName?.trim(),
+            accNum: accountNum?.trim(),
+        });
+    
+    };
 
 
     // Tracks the slide movement to update the little dot indicators
@@ -196,29 +218,60 @@ export default function ToBank() {
 
 
 
-                <View style={{ height: 150, width: BANNER_WIDTH, backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 20, alignSelf: 'center', flexDirection: 'column', gap: 4 }}>
+                <View style={{ width: BANNER_WIDTH, backgroundColor: '#2c2b2b', marginTop: 10, borderRadius: 20, padding: 20, alignSelf: 'center', flexDirection: 'column', gap: 4 }}>
 
 
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>Recipient Account</Text>
 
-                    <View style={{ height: 50, width: '100%', backgroundColor: '#1c1b1b', borderRadius: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: '10', marginTop: 10 }}>
+                    <View style={{ width: '100%', backgroundColor: '#1c1b1b', borderRadius: 10, paddingHorizontal: '10', marginTop: 10 }}>
 
-                        <TextInput
-                            placeholder='Phone No./Opay Account No./Name'
-                            placeholderTextColor={'#888'}
-                            pl
-                            style={{ color: 'white', width: '70%', fontSize: 16, }}
-                            maxLength={10}
-                            inputMode='numeric'
-                        />
-                        <TouchableOpacity activeOpacity={0.5} onPress={handleOpenCamera}>
-                            <MaterialCommunityIcons name="line-scan" size={24} color="#888" />
-                        </TouchableOpacity>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}>
+
+
+                            <TextInput
+                                placeholder='Phone No./Opay Account No./Name'
+                                placeholderTextColor={'#888'}
+                                pl
+                                style={{ color: 'white', width: '70%', fontSize: 16, }}
+                                maxLength={10}
+                                inputMode='numeric'
+                                value={accountNum}
+                                onChangeText={setAccountNum}
+
+                            />
+                            <TouchableOpacity activeOpacity={0.5} onPress={handleOpenCamera}>
+                                <MaterialCommunityIcons name="line-scan" size={24} color="#888" />
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <View style={{ width: '100%', borderWidth: 0.5, borderColor: '#444', marginTop: 10 }} />
+
+                            <TextInput
+                                placeholder="Enter Account Name"
+                                placeholderTextColor="#888"
+                                style={{ color: 'white', width: '100%', fontSize: 16, marginTop: 8 }}
+                                maxLength={20}
+                                keyboardType="default"
+                                value={accountName}
+                                onChangeText={setAccountName}
+                            />
+                        </View>
                     </View>
 
                     <Text style={{ color: '#aaa9a9', fontWeight: 'bold', fontSize: 12 }}>Dont know the recipient's Opay account number? <Text style={{ color: "#2c9b58" }}>{"Ask them >"}</Text></Text>
 
                 </View>
+
+                <TouchableOpacity
+                    onPress={handleNext}
+                    activeOpacity={0.7}
+                    disabled={!isFormValid()}
+                    style={{borderRadius: 25, height: 45,
+                        justifyContent: 'center', alignItems: 'center', backgroundColor: isFormValid() ? '#00D285' : '#024e21', paddingHorizontal:100, width:'80%', alignSelf:'center', marginTop:10 }}>
+                    <Text style={{ color: isFormValid() ? '#043927' : '#0B5E3E', fontWeight: '700', fontSize: 16,}}>Next
+                    </Text>
+                </TouchableOpacity>
 
 
 
@@ -231,16 +284,15 @@ export default function ToBank() {
                 >
                     <View style={{ flex: 1, backgroundColor: '#000' }}>
 
-                        {/* CAMERA LIVE VIEWFINDER */}
                         <CameraView style={{ flex: 1 }} facing="back">
 
-                            {/* FLOATING TOP UTILITY BAR (Contains Back Button) */}
+
                             <View style={{
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 paddingTop: 60, // Clear system status bar notch space
                                 paddingHorizontal: 20,
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)' // Soft dark overlay for status bar text visibility
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)'
                             }}>
 
                                 {/* THE BACK BUTTON */}
@@ -311,7 +363,7 @@ export default function ToBank() {
                             marginHorizontal: 15,
                             marginVertical: 10,
                         }}>
-                            
+
                         <View
                             style={{
                                 flexDirection: 'row',

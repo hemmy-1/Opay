@@ -20,6 +20,7 @@ import ToBank from '../screens/ToBank'
 import ToOpay from '../screens/ToOpay'
 import TransferToBank from '../screens/TransferToBank'
 import BankCard from '../screens/BankCard'
+import AddCard from '../screens/AddCard'
 
 
 const Stack = createNativeStackNavigator()
@@ -54,6 +55,7 @@ const MainNavigator = () => {
           <Stack.Screen name='ToOpay' component={ToOpay} />
           <Stack.Screen name='TransferToBank' component={TransferToBank}/>
           <Stack.Screen name='BankC' component={BankCard}/>
+          <Stack.Screen name='AddCard' component={AddCard}/>
         </>
       )}
     </Stack.Navigator>

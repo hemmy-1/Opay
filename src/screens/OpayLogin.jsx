@@ -7,7 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 export default function Opaylogin({ setIsLoggedIn }) {
 
   const handleLogin = () => {
-    setIsLoggedIn(true);}
+    setIsLoggedIn(true);
+  }
   const navigation = useNavigation()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState('false');
@@ -21,9 +22,7 @@ export default function Opaylogin({ setIsLoggedIn }) {
             justifyContent: 'center',
             alignContent: 'center',
             flexDirection: 'row',
-            alignSelf: 'center',
-            marginTop: 100
-          }}>
+            alignSelf: 'center', marginTop: 100}}>
           <Image source={require('../assets/oopay.png')} style={{ height: 70, width: 70 }} />
           <Text
             style={{ fontSize: 50, color: 'white', alignSelf: 'center' }}>pay</Text>
@@ -96,7 +95,7 @@ export default function Opaylogin({ setIsLoggedIn }) {
           onPress={handleLogin}>
 
           <View style={{
-            paddingHorizontal:150, backgroundColor: '#1DCF9F', borderWidth: 2, paddingVertical:10,
+            paddingHorizontal: 150, backgroundColor: '#1DCF9F', borderWidth: 2, paddingVertical: 10,
             alignSelf: 'center',
             borderRadius: 30,
             //alignItems: 'center',
@@ -115,7 +114,7 @@ export default function Opaylogin({ setIsLoggedIn }) {
 
           </View>
         </TouchableOpacity>
-        
+
 
       </SafeAreaView>
     </SafeAreaProvider>
@@ -137,7 +136,7 @@ const style = StyleSheet.create({
 
   },
   disabledButton: {
-    
+
     backgroundColor: '#1dcfa038',
     alignSelf: 'center',
     borderRadius: 30,
@@ -145,9 +144,9 @@ const style = StyleSheet.create({
     justifyContent: 'center'
   },
   buttonText: {
-    
+
     backgroundColor: '#1dcfa038',
-    
+
     alignSelf: 'center',
     borderRadius: 30,
     //alignItems: 'center',

@@ -47,6 +47,7 @@ export default function AccountLimit() {
                     </Text>
                     <Text style={{ color: 'white' }}> {"BVN & NIN  >"}</Text>
                 </View>
+                
 
                 <View style={{ marginBottom: '10', backgroundColor: '#2c2b2b', borderRadius: 15, padding: 15, gap: 10, height:110 }} >
                     <Text style={{ color: 'white' }}>
@@ -61,6 +62,7 @@ export default function AccountLimit() {
                     <Text style={{ color: 'white' }}>
                         Level Benefit
                     </Text>
+                    
 
                     <View style={{ borderWidth: 1, borderColor: 'black', borderRadius: 18 }}>
 

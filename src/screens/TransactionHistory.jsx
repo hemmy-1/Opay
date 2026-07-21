@@ -40,14 +40,15 @@ export default function TransactionHistory() {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginVertical:6
-          
+          marginVertical: 6
+
         }}
       >
         <View style={{ flexDirection: 'row', gap: 10 }}>
-          <View style={{height: 40, width: 40, borderRadius: 20, backgroundColor: 'white', justifyContent:'center', alignItems:'center'}}>
+          <View style={{ height: 40, width: 40, borderRadius: 20, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
             <Image source={item.img} style={{
-              height: 25, width: 25, }} />
+              height: 25, width: 25,
+            }} />
           </View>
 
           <View>
@@ -57,7 +58,7 @@ export default function TransactionHistory() {
           </View>
         </View>
         <View style={{ alignItems: 'flex-end' }}>
-          <Text style={{ fontSize: 16, fontWeight: '700', color: '#121B35' }}>{item.amount}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '700', color: isPending ? '#e63f3f' : '#ffffff' }}>{item.amount}</Text>
           <View style={{
             marginTop: 8,
             paddingHorizontal: 10,
@@ -233,7 +234,7 @@ export default function TransactionHistory() {
             </View>
           </View>
 
-         <View style={{width:'100%', borderWidth:0.5, borderColor:'#888'}}/>
+          <View style={{ width: '100%', borderWidth: 0.5, borderColor: '#888' }} />
 
           <FlatList
             data={transactions}
