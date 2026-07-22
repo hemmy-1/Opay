@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, TextInput, ScrollView } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import TransferConfirmationModal from '../assets/Components/ReminderModal';
+import PaymentModal from '../assets/Components/PaymentModal';
+import TransferSuccessModal from '../assets/Components/TransferS';
 
 
 const TransferToBank = ({ route, navigation }) => {
-  const [selectedAmount, setSelectedAmount] = useState('');
+  const [selectedAmount, setSelectedAmount] = useState('₦');
   const [remark, setRemark] = useState('');
 
 
@@ -13,12 +15,26 @@ const TransferToBank = ({ route, navigation }) => {
     setIsConfirmModalVisible(true);
   };
 
-  const handleProceedWithTransfer = () => {
+ 
+  const handleReminderContinue = () => {
     setIsConfirmModalVisible(false);
-    // Execute transfer API call here
+    setShowPaymentModal(true); 
+  };
+  const handleFinalPay = () => {
+    setShowPaymentModal(false);
+    setShowSuccessModal(true);
+
+  };
+  
+  const handleDone = () => {
+    setShowSuccessModal(false);
+    navigation.goBack(); 
   };
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
 
   const AMOUNTS = [
     '₦500',
@@ -144,11 +160,34 @@ const TransferToBank = ({ route, navigation }) => {
       <TransferConfirmationModal
         visible={isConfirmModalVisible}
         onClose={() => setIsConfirmModalVisible(false)}
-        onContinue={handleProceedWithTransfer}
+        onContinue={handleReminderContinue}
         accName={accName}
         accNum={accNum}
         bank={bank}
         amount={selectedAmount}
+      />
+
+      <PaymentModal
+        visible={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        onPay={handleFinalPay}
+        accName={accName}
+        accNum={accNum}
+        amount={selectedAmount}
+        walletBalance="0.00"
+        owealthBalance="43.36"
+        onUsePinPress={() => console.log('PIN Selected')}
+        onAddMoneyPress={() => console.log('Add Money Selected')}
+      />
+
+      <TransferSuccessModal
+        visible={showSuccessModal}
+        onDone={handleDone}
+        amount={selectedAmount}
+        onShareReceipt={() => console.log('Share Receipt')}
+        onAddMoney={() => console.log('Add Money')}
+        onAddToFavourites={() => console.log('Added to Favourites')}
+        onViewDetails={() => console.log('View Details')}
       />
       
 
