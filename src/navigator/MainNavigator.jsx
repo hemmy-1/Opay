@@ -21,6 +21,11 @@ import ToOpay from '../screens/ToOpay'
 import TransferToBank from '../screens/TransferToBank'
 import BankCard from '../screens/BankCard'
 import AddCard from '../screens/AddCard'
+import Data from '../screens/Data'
+import Betting from '../screens/Betting'
+import TV from '../screens/TV'
+import SaveBox from '../screens/SaveBox'
+import Settings from '../screens/Settings'
 
 
 const Stack = createNativeStackNavigator()
@@ -56,6 +61,11 @@ const MainNavigator = () => {
           <Stack.Screen name='TransferToBank' component={TransferToBank}/>
           <Stack.Screen name='BankC' component={BankCard}/>
           <Stack.Screen name='AddCard' component={AddCard}/>
+          <Stack.Screen name='Data' component={Data}/>
+          <Stack.Screen name='Betting' component={Betting}/>
+          <Stack.Screen name='Tv' component={TV}/>
+          <Stack.Screen name='SaveBox' component={SaveBox}/>
+          <Stack.Screen name='Settings' component={Settings}/>
         </>
       )}
     </Stack.Navigator>

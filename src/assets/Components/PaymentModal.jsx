@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     },
     sectionHeader: {
         flexDirection: 'row',
-        justify: 'space-between',
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 10,
     },
@@ -365,7 +365,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00D285',
         height: 50,
         borderRadius: 25,
-        justify: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
     },

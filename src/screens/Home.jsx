@@ -5,16 +5,20 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import React, { useState, useEffect } from 'react'; // Added useEffect import
+import React, { useState, useEffect } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, FlatList, Modal, TextInput } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useBalance } from '../assets/Components/BalanceProvider';
+import Entypo from '@expo/vector-icons/Entypo';
 
 export default function Home() {
     const navigation = useNavigation();
-    const [isBalanceVisible, setIsBalanceVisible] = useState(true);
     const logoImage = require('../assets/logoooo.png');
+
+    // 1. FIXED: Extract both balance and setBalance from Context
+    const { isBalanceVisible, toggleBalanceVisibility, balance, setBalance } = useBalance();
 
     const DataHistory = [
         {
@@ -38,40 +42,36 @@ export default function Home() {
     // Primary active states
     const [nickname, setNickname] = useState('Guest user');
     const [username, setUsername] = useState('username1');
-    const [balance, setBalance] = useState('0.00');
+    // 1. FIXED: Removed the local balance useState here so it uses the Global Context
 
     // Buffer fields state
     const [tempNickname, setTempNickname] = useState('');
     const [tempUsername, setTempUsername] = useState('');
     const [tempBalance, setTempBalance] = useState('');
 
-    // Fixed variable name to match use case (controls modal overlay visibility)
     const [openModal, setOpenModal] = useState(false);
 
-    // 1. AUTO-LOAD PERSISTED DATA ON BOOTUP
     useEffect(() => {
         loadSavedUserInput();
     }, []);
 
     const loadSavedUserInput = async () => {
         try {
-            // Made keys uniform across load and save steps
             const savedNickname = await AsyncStorage.getItem('@user_nickname');
             const savedUsername = await AsyncStorage.getItem('@user_username');
             const savedBalance = await AsyncStorage.getItem('@user_balance');
 
             if (savedNickname !== null) setNickname(savedNickname);
             if (savedUsername !== null) setUsername(savedUsername);
-            if (savedBalance !== null) setBalance(savedBalance);
+            if (savedBalance !== null) setBalance(savedBalance); // Updates global balance
         } catch (error) {
             console.log('Error loading data from storage:', error);
         }
     };
 
-    // 2. DISPATCH SAVE SUBMISSION TRIGGER
     const handleSavedProfiles = async () => {
         const finalNickname = tempNickname || 'Guest User';
-        const finalUsername = tempUsername || 'username123'; // Fixed typo in variable name
+        const finalUsername = tempUsername || 'username123';
         const finalBalance = tempBalance || '0.00';
 
         try {
@@ -81,9 +81,9 @@ export default function Home() {
 
             setNickname(finalNickname);
             setUsername(finalUsername);
-            setBalance(finalBalance);
+            setBalance(finalBalance); // Updates global balance
 
-            setOpenModal(false); // Cleaned variable lookup reference crash
+            setOpenModal(false);
         } catch (error) {
             console.log('Error saving data to local storage:', error);
         }
@@ -139,8 +139,7 @@ export default function Home() {
                     marginVertical: 10, justifyContent: 'space-between'
                 }}>
                     <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-                        {/* Cleaned navigation route callback params crash format */}
-                        <TouchableOpacity onPress={()=> navigation.navigate('MyProfile', {logo: logoImage, name: username})}>
+                        <TouchableOpacity onPress={() => navigation.navigate('MyProfile', { logo: logoImage, name: username })}>
                             <Image source={logoImage} style={{ width: 40, height: 40, borderRadius: 20 }} />
                         </TouchableOpacity>
                         <Text style={{ color: '#ffffff', fontSize: 24 }}>hi, {nickname}</Text>
@@ -165,7 +164,9 @@ export default function Home() {
                             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
                                 <MaterialCommunityIcons name="guitar-pick" size={24} color="#fff" />
                                 <Text style={{ color: '#fff', fontSize: 18 }}>Available balance</Text>
-                                <TouchableOpacity onPress={() => setIsBalanceVisible(!isBalanceVisible)}>
+
+                                {/* 2. FIXED: Correctly passed toggleBalanceVisibility to onPress */}
+                                <TouchableOpacity onPress={toggleBalanceVisibility}>
                                     {isBalanceVisible ? (
                                         <MaterialCommunityIcons name="eye-outline" size={24} color="#fff" />
                                     ) : (
@@ -174,16 +175,18 @@ export default function Home() {
                                 </TouchableOpacity>
                             </View>
 
-                            <TouchableOpacity onPress={() => navigation.navigate('History')} >
-                                <Text style={{ color: '#fff', fontSize: 18 }}>Transaction History {'>'} </Text>
+                            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => navigation.navigate('History')} >
+                                <Text style={{ color: '#fff', fontSize: 18 }}>Transaction History  </Text>
+                                <Entypo name="chevron-right" size={24} color="white" />
                             </TouchableOpacity>
                         </View>
 
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between' }}>
-                            <View>
+                            <View style={{flexDirection:'row', alignItems:'center'}}>
                                 <Text style={{ color: '#fff', marginStart: 10, fontSize: 24, fontWeight: 'bold' }}>
-                                    {isBalanceVisible ? `₦${balance}` : '******'} {'>'}
+                                    {isBalanceVisible ? `₦${balance}` : '******'} 
                                 </Text>
+                                <Entypo name="chevron-right" size={24} color="white" />
                             </View>
 
                             <TouchableOpacity onPress={() => navigation.navigate('AddMoney')} style={{
@@ -265,7 +268,7 @@ export default function Home() {
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>Airtime</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('SaveBox')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <FontAwesome6 name="naira-sign" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>SaveBox</Text>
@@ -273,13 +276,13 @@ export default function Home() {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'column', gap: 25 }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Data')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <MaterialCommunityIcons name="access-point-network" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>Data</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => alert('coming soon')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <FontAwesome6 name="naira-sign" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>Loan</Text>
@@ -287,13 +290,13 @@ export default function Home() {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'column', gap: 25 }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Betting')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <FontAwesome name="soccer-ball-o" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>Betting</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => alert('coming soon')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <MaterialIcons name="speaker-phone" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>Invitation</Text>
@@ -301,13 +304,13 @@ export default function Home() {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'column', gap: 25 }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Tv')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <Feather name="tv" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>TV</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => alert('coming soon')}>
                             <View style={{ alignItems: 'center', flexDirection: 'column', gap: 10 }}>
                                 <MaterialIcons name="streetview" size={24} color="white" style={{ backgroundColor: 'black', borderWidth: 8, borderRadius: 15 }} />
                                 <Text style={{ color: '#ffffff', fontSize: 18 }}>More</Text>

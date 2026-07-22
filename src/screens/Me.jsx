@@ -8,6 +8,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useNavigation } from '@react-navigation/native';
 import jsxRuntime from 'react/jsx-runtime';
+import { BalanceProvider } from '../assets/Components/BalanceProvider';
+import { useBalance } from '../assets/Components/BalanceProvider';
 
 
 
@@ -17,7 +19,7 @@ export default function Me() {
   const navigation = useNavigation();
   const logoImage = images.logoooo;
 
-  const [isBalanceVisible, setIsBalanceVisible] = useState(false)
+  const { isBalanceVisible, toggleBalanceVisibility, balance } = useBalance();
 
 
   const menuData = [
@@ -26,7 +28,7 @@ export default function Me() {
       title: 'Transaction History',
       imageSource: images.transaction,
       screen: 'History'
-      
+
     },
     {
       id: '2',
@@ -55,7 +57,7 @@ export default function Me() {
       title: 'OJunior',
       subtitle: 'Create an account for your child/ward',
       imageSource: images.people,
-      
+
     },
     {
       id: '6',
@@ -65,7 +67,7 @@ export default function Me() {
       imageSource: images.shop1,
     },
   ];
-  
+
   const menuData2 = [
     {
       id: '1',
@@ -102,13 +104,20 @@ export default function Me() {
 
     return (
       <TouchableOpacity
-      onPress={()=> navigation.navigate(item.screen)}
+        onPress={() => {
+          if (item.screen) {
+            navigation.navigate(item.screen);
+          } else {
+            alert('coming soon');
+          }
+        }}
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
           paddingVertical: 10,
-        }}
+        }
+        }
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
           <Image
@@ -136,7 +145,7 @@ export default function Me() {
 
   return (
     <SafeAreaProvider>
-      <View style={{flex:1, backgroundColor:'#000'}}>
+      <View style={{ flex: 1, backgroundColor: '#000' }}>
 
         <SafeAreaView style={{
           backgroundColor: '#0d6528', height: 260, padding: 10,
@@ -148,7 +157,7 @@ export default function Me() {
             alignItems: 'center',
             marginVertical: 10, justifyContent: 'space-between'
           }}>
-            <TouchableOpacity onPress={()=> navigation.navigate('MyProfile', logoImaget)} style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('MyProfile', logoImaget)} style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
               <View>
                 <Image source={logoImage} style={{ width: 40, height: 40, borderRadius: 20 }} />
               </View>
@@ -159,7 +168,9 @@ export default function Me() {
               </View>
 
             </TouchableOpacity>
-            <Feather name="settings" size={20} color="white" />
+            <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+              <Feather name="settings" size={20} color="white" />
+            </TouchableOpacity>
           </View>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -168,7 +179,7 @@ export default function Me() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
 
                 <Text style={{ color: 'white' }}>Total Balance</Text>
-                <TouchableOpacity onPress={() => setIsBalanceVisible(!isBalanceVisible)}>
+                <TouchableOpacity onPress={() => { toggleBalanceVisibility }}>
                   {isBalanceVisible ? (
                     <MaterialCommunityIcons name="eye-outline" size={24} color="white" />
                   ) : (
@@ -178,7 +189,7 @@ export default function Me() {
               </View>
 
               <Text style={{ color: 'white', fontSize: 25, fontWeight: '800' }}>
-                ₦ 76,320,500<Text style={{ fontSize: 18 }}>.98
+                {isBalanceVisible ? `₦${balance}` : '******'} <Text style={{ fontSize: 18 }}>.98
                 </Text>
               </Text>
               <TouchableOpacity activeOpacity={0.5} style={{ height: 20, width: 170, backgroundColor: 'black', borderRadius: 10, paddingHorizontal: 3, alignItems: 'center', justifyContent: 'center' }}>
