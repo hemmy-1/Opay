@@ -42,7 +42,7 @@ export default function Me() {
       title: 'Bank Card/Account',
       subtitle: '3 linked cards/accounts',
       imageSource: images.card3,
-      screen: 'BankC'
+      screen: 'BankC',
     },
     {
       id: '4',
@@ -50,6 +50,7 @@ export default function Me() {
       subtitle: 'Receive payment for business',
       badgeText: 'Fast TFR',
       imageSource: images.shop1,
+      screen: 'Testing'
 
     },
     {

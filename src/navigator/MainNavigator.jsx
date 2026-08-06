@@ -26,6 +26,7 @@ import Betting from '../screens/Betting'
 import TV from '../screens/TV'
 import SaveBox from '../screens/SaveBox'
 import Settings from '../screens/Settings'
+import Testing from '../screens/Testing'
 
 
 const Stack = createNativeStackNavigator()
@@ -66,6 +67,7 @@ const MainNavigator = () => {
           <Stack.Screen name='Tv' component={TV}/>
           <Stack.Screen name='SaveBox' component={SaveBox}/>
           <Stack.Screen name='Settings' component={Settings}/>
+          <Stack.Screen name='Testing' component={Testing}/>
         </>
       )}
     </Stack.Navigator>

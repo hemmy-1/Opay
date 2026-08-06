@@ -36,7 +36,7 @@ export default function TabNavigation() {
 
 // Custom Bottom Tab Bar Component
 function CustomTabBar({ state, descriptors, navigation }) {
-    const insets = useSafeAreaInsets(); // Ensures perfect device-level bottom spacing padding
+    const insets = useSafeAreaInsets(); 
 
     return (
         <View style={{
