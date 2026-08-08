@@ -89,16 +89,16 @@ export default function Opaylogin({ setIsLoggedIn }) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[isButtonDisabled && style.disabledButton]}
           disabled={isButtonDisabled}
 
           onPress={handleLogin}>
 
           <View style={{
-            paddingHorizontal: 150, backgroundColor: '#1DCF9F', borderWidth: 2, paddingVertical: 10,
+            paddingHorizontal: 150,
+            backgroundColor: isButtonDisabled ? '#134437' : '#1DCF9F', 
+             paddingVertical: 10,
             alignSelf: 'center',
             borderRadius: 30,
-            //alignItems: 'center',
             justifyContent: 'center'
           }}>
             <Text

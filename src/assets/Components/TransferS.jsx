@@ -25,7 +25,7 @@ const TransferSuccessModal = ({
             id: '1',
             title: 'Save easily',
             subtitle: 'Earn more interest every day!',
-            iconName: 'sack-dollar',
+            // iconName: 'sack-dollar',
             iconType: 'font-awesome-5',
         },
         {

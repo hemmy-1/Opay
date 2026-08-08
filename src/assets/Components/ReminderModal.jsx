@@ -70,7 +70,7 @@ const TransferConfirmationModal = ({
                                     <Text style={styles.tagText}>Thousands</Text>
                                 </View>
                                 <Text style={styles.amountText}>
-                                    {amount || '5,888.00'}
+                                    ₦{amount}
                                 </Text>
                             </View>
                         </View>

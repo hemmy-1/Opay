@@ -214,8 +214,7 @@ export default function Home() {
                     </View>
                 </View>
 
-                {/* CONDITIONAL DROPDOWN ACCORDION DATA FEED */}
-                {!isBalanceVisible && (
+                {isBalanceVisible && (
                     <View style={{
                         width: '95%', backgroundColor: '#393535', borderRadius: 18,
                         padding: 10, height: 120, paddingHorizontal: 20, marginHorizontal: 10

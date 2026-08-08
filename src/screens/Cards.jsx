@@ -56,7 +56,7 @@ export default function Cards() {
   ];
 
   // 2. The render row function
-  const xrenderBenefitItem = ({ item }) => (
+  const renderBenefitItem = ({ item }) => (
     <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 24 }}>
 
       <View style={{

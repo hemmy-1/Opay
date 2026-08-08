@@ -15,20 +15,20 @@ const TransferToBank = ({ route, navigation }) => {
     setIsConfirmModalVisible(true);
   };
 
- 
+
   const handleReminderContinue = () => {
     setIsConfirmModalVisible(false);
-    setShowPaymentModal(true); 
+    setShowPaymentModal(true);
   };
   const handleFinalPay = () => {
     setShowPaymentModal(false);
     setShowSuccessModal(true);
 
   };
-  
+
   const handleDone = () => {
     setShowSuccessModal(false);
-    navigation.goBack(); 
+    navigation.goBack();
   };
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
@@ -37,15 +37,15 @@ const TransferToBank = ({ route, navigation }) => {
 
 
   const AMOUNTS = [
-    '₦500',
-    '₦1000',
-    '₦2000',
-    '₦5000',
-    '₦9,999',
-    '₦10,000',
+    '500',
+    '1000',
+    '2000',
+    '5000',
+    '9,999',
+    '10,000',
   ];
 
-  const { accNum = '', bank = 'Opay', accName= ''} = route?.params || {};
+  const { accNum = '', bank = 'Opay', accName = '' } = route?.params || {};
 
   return (
     <ScrollView style={styles.container}>
@@ -66,7 +66,7 @@ const TransferToBank = ({ route, navigation }) => {
         <Ionicons name="person-circle" size={60} color="white" />
         <View style={{ marginLeft: 10 }}>
           <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>
-            {accName  || 'Unknow'}
+            {accName || 'Unknow'}
           </Text>
           <Text style={{ color: '#888', marginTop: 3, fontSize: 15 }}>
             {bank + "  " + accNum || 'Opay'}
@@ -83,15 +83,17 @@ const TransferToBank = ({ route, navigation }) => {
               NO Transaction Fees
             </Text>
           </View>
-
-          <TextInput
-            placeholder="₦ 10.00 - 5,000,000.00"
-            placeholderTextColor="#777"
-            keyboardType="numeric"
-            value={selectedAmount}
-            onChangeText={setSelectedAmount}
-            style={{ color: '#fff', fontSize: 18, marginTop: 10 }}
-          />
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <Text style={{color:'white', fontSize:20, marginTop:9}}>₦</Text>
+            <TextInput
+              placeholder="₦ 10.00 - 5,000,000.00"
+              placeholderTextColor="#777"
+              keyboardType="numeric"
+              value={selectedAmount}
+              onChangeText={setSelectedAmount}
+              style={{ color: '#fff', fontSize: 18, marginTop: 10, width:'80%' }}
+            />
+          </View>
 
           <View style={{ height: 1, backgroundColor: '#444', marginVertical: 15 }} />
 
@@ -189,11 +191,11 @@ const TransferToBank = ({ route, navigation }) => {
         onAddToFavourites={() => console.log('Added to Favourites')}
         onViewDetails={() => console.log('View Details')}
       />
-      
+
 
     </ScrollView>
 
-    
+
   );
 };
 
